@@ -1,0 +1,6 @@
+# Keep the local visual editor and its launcher out of GitHub Pages commits.
+/Start-Wiki-Editor.bat
+/PAGE-TEMPLATE.html
+/wiki-editor.html
+/tools/visual-editor-server.js
+/tools/visual-editor/

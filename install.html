@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark" style="--wiki-accent-light: #000000; --wiki-accent-dark: #ffffff; --wiki-hero-light: #ffffff; --wiki-hero-dark: #222426;"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Install | DragonMounts 2 Wiki</title>
+<meta name="description" content="Step-by-step install guide for the DragonMounts 2 Bedrock add-on, with update steps and troubleshooting.">
+<meta name="theme-color" content="#21152d">
+<link rel="icon" href="textures/pack_icon.png" type="image/png">
+
+<script>try{var t=localStorage.getItem("dm2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(x){}</script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="svg-sprite" width="0" height="0" aria-hidden="true"><defs>
+<symbol id="head" viewBox="0 0 160 120"><path d="M58 40C44 28 28 22 10 24c14 6 26 16 34 30z"></path><path d="M80 38C70 22 56 12 40 8c12 10 20 24 24 38z"></path><path d="M28 90C20 66 34 44 62 40c22-4 50 4 78 22 10 6 8 16-2 18l-26 2c-6 12-22 16-36 12-14 8-30 4-48-4z"></path><path d="M30 92l-14 14 22-6zM46 98l-6 16 18-12z"></path><path d="M86 52c10-8 26-4 36 6-12 2-26 0-36-6z" class="dragon-eye-accent"></path><ellipse cx="104" cy="55" rx="2.6" ry="5.5" transform="rotate(-62 104 55)" class="dragon-eye-pupil"></ellipse><circle cx="138" cy="66" r="2" class="dragon-eye-accent"></circle><path d="M82 80l50-8" fill="none" stroke="var(--eyec,#fff)" stroke-width="2" stroke-linecap="round"></path></symbol>
+<symbol id="i-core" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 7.5l3.5 4.5-3.5 4.5L8.5 12z"></path></symbol>
+<symbol id="i-scepter" viewBox="0 0 24 24"><path d="M4 20l9-9"></path><path d="M17 3l4 4-4 4-4-4z"></path></symbol>
+<symbol id="i-flute" viewBox="0 0 24 24"><path d="M3 17L17 3l4 4L7 21z"></path><path d="M9 15v.01M12 12v.01M15 9v.01"></path></symbol>
+<symbol id="i-shears" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"></circle><circle cx="6" cy="18" r="2.5"></circle><path d="M8 7.5L21 17M8 16.5L21 7"></path></symbol>
+<symbol id="i-chest" viewBox="0 0 24 24"><path d="M8 3L3 7l2 5 3-1v10h8V11l3 1 2-5-5-4c-1 2-2 3-4 3S9 5 8 3z"></path></symbol>
+<symbol id="i-feather" viewBox="0 0 24 24"><path d="M20 4C10 4 5 9 5 15l-2 6M5 16c7 0 13-4 15-12-4 2-8 2-11 5"></path></symbol>
+<symbol id="i-bone" viewBox="0 0 24 24"><path d="M8.5 15.5l7-7"></path><circle cx="6.5" cy="14.5" r="2.2"></circle><circle cx="9.5" cy="17.5" r="2.2"></circle><circle cx="14.5" cy="6.5" r="2.2"></circle><circle cx="17.5" cy="9.5" r="2.2"></circle></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3c4 0 8 3 8 8 0 5-4 9-8 10-4-1-8-5-8-10 0-5 4-8 8-8z"></path><path d="M12 7v10"></path></symbol>
+<symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="2.5"></circle><path d="M12 5a7 7 0 0 1 7 7"></path></symbol>
+<symbol id="i-egg" viewBox="0 0 24 24"><path d="M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z"></path><path d="M7.5 14c3 1.5 6 1.5 9 0"></path></symbol>
+<symbol id="i-wing" viewBox="0 0 24 24"><path d="M2 19C3 10 9 5 22 4c-1 4-3 6-6 7 2 0 3 0 5 0-2 4-6 6-10 6 1 0 2 0 3-1-4 0-8 1-12 3z"></path></symbol>
+<symbol id="i-follow" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"></circle><circle cx="17" cy="12" r="2.5"></circle><path d="M9 12h5M12 9l3 3-3 3"></path></symbol>
+</defs></svg>
+<header class="site"><div class="wrap bar">
+<a class="brand" href="index.html" aria-label="DragonMounts 2 Wiki, home"><img class="mark" src="textures/pack_icon.png" alt=""><span>DragonMounts 2</span></a>
+<div class="tools">
+<button class="ibtn menu-toggle" id="nav-toggle" type="button" aria-label="Open guide menu" aria-controls="nav-drawer" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+<button class="sbtn" id="sbtn" type="button" aria-label="Search the wiki"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><span>Search</span><kbd>/</kbd></button>
+<button class="ibtn" id="theme" type="button" aria-label="Switch to light mode" aria-pressed="true" title="Switch to light mode"><svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"></path></svg></button>
+</div></div></header>
+<dialog class="nav-drawer" id="nav-drawer" aria-labelledby="nav-title">
+<div class="drawer-head"><b id="nav-title">Explore the wiki</b><button class="ibtn" id="nav-close" type="button" aria-label="Close guide menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div>
+<nav aria-label="Guide pages"><section class="guide-group"><h2>Start here</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li></ul></section><section class="guide-group"><h2>Dragon guide</h2><ul><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Eggs and taming</a></li><li><a href="flight.html">Riding and flight</a></li></ul></section><section class="guide-group"><h2>Reference</h2><ul><li><a href="items.html">Items and equipment</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ and glossary</a></li></ul></section></nav>
+<section class="drawer-section"><h2>On this page</h2><ul><li><a href="#before">Before you start</a></li><li><a href="#downloads">Download options</a></li><li><a href="#steps">Install steps</a></li><li><a href="#version">Version scope</a></li><li><a href="#troubleshooting">Troubleshooting</a></li></ul></section>
+</dialog>
+<main id="main" class="editor-editing">
+<div class="phead"><div class="wrap"><h1>Install</h1><p class="lede">Get Dragon Mounts 2 running in a Bedrock world, update from an older build, and fix the usual problems.</p></div></div>
+<div class="wrap layout has-sidebar">
+<aside class="guide-sidebar"><nav aria-label="Wiki chapters"><section class="guide-group"><h2>Start here</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li></ul></section><section class="guide-group"><h2>Dragon guide</h2><ul><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Eggs and taming</a></li><li><a href="flight.html">Riding and flight</a></li></ul></section><section class="guide-group"><h2>Reference</h2><ul><li><a href="items.html">Items and equipment</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ and glossary</a></li></ul></section></nav><section class="guide-group"><h2>On this page</h2><ul><li><a href="#before">Before you start</a></li><li><a href="#downloads">Download options</a></li><li><a href="#steps">Install steps</a></li><li><a href="#version">Version scope</a></li><li><a href="#troubleshooting">Troubleshooting</a></li></ul></section></aside>
+<article>
+
+<h2 id="before" class=""><a class="anchor" href="#before" aria-label="Link to this section">#</a>Before you start</h2>
+<ul class="">
+<li>This is the <b>Minecraft Bedrock</b> add-on; check the exact supported game version on the selected file.</li>
+<li>Back up your world before adding or updating packs.</li>
+<li>Use the notes attached to the selected release for version-specific steps.</li>
+</ul>
+<h2 id="downloads" class=""><a class="anchor" href="#downloads" aria-label="Link to this section">#</a>Download options</h2>
+<p class="">Choose a download page and confirm the file supports your Minecraft version before installing.</p>
+<ul class="download-sources"><li><a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2">CurseForge</a></li><li><a href="https://mcpedl.com/dragon-mounts-2/">MCPEDL</a></li><li><a href="https://vatonage.com/mods/dragon-mounts-2">Vatonage</a></li><li><a href="https://modbay.org/mods/4446-dragon-mounts-2.html">ModBay</a></li></ul>
+
+<h2 id="steps"><a class="anchor" href="#steps" aria-label="Link to this section">#</a>Install steps</h2>
+<p class="">Tick each step as you go. Your progress is saved in this browser.</p>
+<div class="panel">
+<div class="prog"><i id="pbar" style="width: 0%;"></i></div><p id="ptxt">0 of 4 steps done</p>
+<ol class="steps"><li><label><input type="checkbox"><span>Download the current file<small>Choose a page from the <a href="#downloads">download options</a> and check that the release supports your Minecraft version.</small></span></label></li><li><label><input type="checkbox"><span>Import the add-on<small>Open the downloaded file with Minecraft Bedrock and wait for the import to finish.</small></span></label></li><li><label><input type="checkbox"><span>Apply it to a world<small>In the world settings, enable the imported Dragon Mounts 2 packs, then load the world.</small></span></label></li><li><label><input type="checkbox"><span>Review the release notes<small>Check the notes for your selected release before installing.</small></span></label></li></ol>
+<p><button class="btn ghost sm" id="preset" type="button">Start over</button></p>
+</div>
+
+<h2 id="version" class=""><a class="anchor" href="#version" aria-label="Link to this section">#</a>Version scope</h2>
+<dl class="facts">
+<dt>Latest public file</dt><dd>v1.2.5.1</dd>
+<dt>Listed game version</dt><dd>Minecraft Bedrock 26.40+</dd>
+<dt>Edition</dt><dd>Minecraft Bedrock</dd>
+<dt>Download sources</dt><dd><a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2">CurseForge</a>, <a href="https://mcpedl.com/dragon-mounts-2/">MCPEDL</a>, <a href="https://vatonage.com/mods/dragon-mounts-2">Vatonage</a>, <a href="https://modbay.org/mods/4446-dragon-mounts-2.html">ModBay</a></dd>
+</dl>
+
+<h2 id="troubleshooting" class=""><a class="anchor" href="#troubleshooting" aria-label="Link to this section">#</a>Troubleshooting</h2>
+<details class="q" id="t-i-can-t-find-the-add-on-in-my-world-s-settings"><summary>I can't find the add-on in my world's settings</summary><div class="body"><p class="">Confirm Minecraft finished importing the file, then check the world's Resource Packs and Behavior Packs lists. If that does not work, please retry or get in hold of the Developers on Discord or the supplied download links.</p></div></details><details class="q" id="t-dragons-or-items-are-missing" open=""><summary>Dragons or items are missing</summary><div class="body"><p class="">Check that every pack included with the download is enabled for the world. If it persists do a fresh install</p></div></details><details class="q" id="t-the-file-will-not-import"><summary>The file will not import</summary><div class="body"><p class="">Confirm your Minecraft version is supported by the selected <a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all">release file</a>, then follow the official <a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki">installation notes</a>.</p></div></details><details class="q" id="t-a-mechanic-differs-from-this-guide"><summary>A mechanic differs from this guide</summary><div class="body"><p class="">Check the notes attached to your exact <a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all">release file</a>, then report the difference, if the features behaves as intended but the wiki has give false information or old information please contact us on Github or Discord.</p></div></details>
+<p class="mute troubleshooting-note">Still stuck? <span data-link="discord"><a href="https://discord.gg/Ewm8aTTJ3K">Ask on Discord</a></span><span data-link="issues"> or <a href="https://github.com/Grummboy2/TestWiki/issues/new">report it on GitHub</a></span></p>
+
+</article>
+</div>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="footgrid">
+<div><a class="brand" href="index.html"><img class="mark" src="textures/pack_icon.png" alt=""><span>DragonMounts 2 Wiki</span></a><p>Project wiki for the public Minecraft Bedrock v1.2.5.1 release.</p></div>
+<div><h4>Guide</h4><ul><li><a href="install.html">Install</a></li><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Breeding</a></li><li><a href="flight.html">Flight</a></li><li><a href="items.html">Items</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+<div><h4>Official sources</h4><ul>
+<li><a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki">Project wiki</a></li>
+<li data-link="curseforge"><a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all">CurseForge page</a></li>
+<li data-link="discord"><a href="https://discord.gg/Ewm8aTTJ3K">Discord</a></li></ul></div>
+<div><h4>This wiki</h4><ul>
+<li data-link="issues"><a href="https://github.com/Grummboy2/TestWiki/issues/new">Report a mistake</a></li>
+<li data-link="repo"><a href="https://github.com/Grummboy2/TestWiki">Source on GitHub</a></li></ul></div>
+</div>
+<small>The gameplay guides describe v1.2.5.1; the Changelog also archives historical project releases. Check the official download listing for current game-version support.</small>
+</div></footer>
+<div id="sx" hidden=""><div class="sbox" role="dialog" aria-modal="true" aria-label="Search the wiki"><input id="sq" type="search" placeholder="Search dragons, eggs, taming, riding, equipment" aria-label="Search the wiki" autocomplete="off"><div id="sres"></div><div class="sfoot">Arrow keys to move, Enter to open, Esc to close</div></div></div>
+<script src="assets/config.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+
+
+</body></html>
