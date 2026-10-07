@@ -57,6 +57,6 @@ window.DM_CONFIG = {
   "download": "https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all",
   "discord": "https://discord.gg/Ewm8aTTJ3K",
   "curseforge": "https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all",
-  "repo": "https://github.com/Grummboy2/TestWiki",
-  "issues": "https://github.com/Grummboy2/TestWiki/issues/new"
+  "repo": "https://github.com/DragonMounts-Team/Dragon-Mounts-2-Wiki",
+  "issues": "https://github.com/DragonMounts-Team/Dragon-Mounts-2-Wiki/issues/new"
 };

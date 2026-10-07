@@ -6,7 +6,7 @@ You do NOT need to run this to publish the site: the generated files are already
 in the project root. Run it only if you want to change content in bulk:
 
     python3 tools/build.py
-    python tools/build.py --url https://Grummboy2.github.io/TestWiki
+    python tools/build.py --url https://dragonmounts-team.github.io/Dragon-Mounts-2-Wiki
 
 Passing --url adds canonical links, social tags and a sitemap.xml.
 """

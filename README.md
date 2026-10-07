@@ -4,4 +4,4 @@ The Dragon Mounts 2 project wiki starts by asking whether you play Minecraft Bed
 
 - [Official CurseForge files](https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all)
 - [Official project wiki](https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki)
-- [Report a wiki issue](https://github.com/Grummboy2/TestWiki/issues/new)
+- [Report a wiki issue](https://github.com/DragonMounts-Team/Dragon-Mounts-2-Wiki/issues/new)
