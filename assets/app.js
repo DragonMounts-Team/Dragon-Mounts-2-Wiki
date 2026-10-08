@@ -80,6 +80,8 @@
     tbtn.setAttribute("aria-pressed", dark ? "true" : "false");
     tbtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     tbtn.title = dark ? "Switch to light mode" : "Switch to dark mode";
+    var themeColor = $("meta[name='theme-color']");
+    if (themeColor) themeColor.content = dark ? "#2b2d30" : "#f7f3fa";
   }
   if (tbtn) {
     syncThemeControl();
@@ -88,12 +90,9 @@
       if (!cur) cur = matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light";
       var next = cur === "dark" ? "light" : "dark";
       function applyTheme() {
-        var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (!reduceMotion) {
-          root.classList.add("theme-transitioning");
-          clearTimeout(themeTransitionTimer);
-          themeTransitionTimer = setTimeout(function () { root.classList.remove("theme-transitioning"); }, 380);
-        }
+        root.classList.add("theme-transitioning");
+        clearTimeout(themeTransitionTimer);
+        themeTransitionTimer = setTimeout(function () { root.classList.remove("theme-transitioning"); }, 380);
         root.setAttribute("data-theme", next);
         store.set("dm2-theme", next);
         syncThemeControl();

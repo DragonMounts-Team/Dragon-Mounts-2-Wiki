@@ -15,7 +15,13 @@
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="index.html?choose=1"><img class="mark" src="textures/pack_icon.png" alt=""><span>DragonMounts 2 Wiki</span></a>
-    <a class="btn sm" href="index.html?choose=1">Change edition</a>
+    <div class="tools">
+      <a class="btn sm" href="index.html?choose=1">Change edition</a>
+      <button class="ibtn" id="theme" type="button" aria-label="Switch between light and dark mode">
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -27,6 +33,8 @@
   </section>
 </main>
 <footer class="foot"><div class="wrap"><p>Dragon Mounts 2 Wiki · <a href="index.html?choose=1">Choose edition</a> · <a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki">Project wiki</a></p></div></footer>
+<script src="assets/config.js"></script>
+<script src="assets/app.js"></script>
 <script>
 try { localStorage.setItem("dm2-edition", "java"); } catch (error) {}
 </script>

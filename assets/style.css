@@ -48,6 +48,7 @@ mark{background:var(--a);color:var(--on-a);border-radius:3px;padding:0 2px}
 .menu-toggle svg{width:20px;height:20px}
 .nav-drawer{position:fixed;inset:0 0 0 auto;margin:0 0 0 auto;width:min(23rem,calc(100vw - 1rem));height:100%;max-height:100dvh;border:0;border-left:1px solid var(--line);padding:1.25rem;background:var(--panel);color:var(--fg);box-shadow:-1rem 0 3rem rgba(0,0,0,.24);overflow-y:auto}
 @keyframes drawer-enter{from{opacity:.75;transform:translateX(1rem)}to{opacity:1;transform:translateX(0)}}
+@keyframes drawer-fade-enter{from{opacity:0}to{opacity:1}}
 .nav-drawer[open]{animation:drawer-enter .22s ease-out both}
 .nav-drawer::backdrop{background:rgba(0,0,0,.58)}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
@@ -231,7 +232,7 @@ ol.path span{color:var(--mute)}
 
 @keyframes page-enter{from{opacity:.75;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:no-preference){main{animation:page-enter .28s ease-out both}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.task-group .tasks a:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}:root.theme-transitioning,:root.theme-transitioning *,:root.theme-transitioning *::before,:root.theme-transitioning *::after{transition:background-color .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease!important}:root .nav-drawer[open]{animation:drawer-fade-enter .18s ease-out both!important}.task-group .tasks a:hover{transform:none}}
 @media print{.site,.nav-drawer,.menu-toggle,.foot,.finder,.chipset,.skip{display:none!important}body{background:#fff;color:#000}details.q .body{display:block}}
 
 @media(max-width:560px){h2{font-size:1.55rem}.phead h1{font-size:2.25rem}.home-hero h1{font-size:2.4rem}.release-strip a{margin-left:0}dl.facts{grid-template-columns:1fr}dl.facts dt{padding-bottom:0;border-top:1px solid var(--line)!important}dl.facts dd{border-top:0!important;padding-top:.2rem}dl.facts dt:first-of-type{border-top:0!important}.brand{font-size:1rem}}
