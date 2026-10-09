@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-GB"><head>
+<html lang="en-GB">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Eggs and taming | DragonMounts 2 Wiki</title>
-<meta name="description" content="Official egg hatching, raw-fish taming and breeding food, and egg transformation reference for Dragon Mounts 2.">
-<meta name="theme-color" content="#2b2d30">
+<title>DragonMounts 2 Wiki</title>
+<meta name="description" content="Dragon Mounts 2 Wiki for Minecraft Bedrock and Java editions.">
+<meta name="theme-color" content="#21152d">
 <link rel="icon" href="textures/pack_icon.png" type="image/png">
 
 <script>try{var t=localStorage.getItem("dm2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(x){}</script>
@@ -13,74 +14,140 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <svg class="svg-sprite" width="0" height="0" aria-hidden="true"><defs>
-<symbol id="head" viewBox="0 0 160 120"><path d="M58 40C44 28 28 22 10 24c14 6 26 16 34 30z"></path><path d="M80 38C70 22 56 12 40 8c12 10 20 24 24 38z"></path><path d="M28 90C20 66 34 44 62 40c22-4 50 4 78 22 10 6 8 16-2 18l-26 2c-6 12-22 16-36 12-14 8-30 4-48-4z"></path><path d="M30 92l-14 14 22-6zM46 98l-6 16 18-12z"></path><path d="M86 52c10-8 26-4 36 6-12 2-26 0-36-6z" class="dragon-eye-accent"></path><ellipse cx="104" cy="55" rx="2.6" ry="5.5" transform="rotate(-62 104 55)" class="dragon-eye-pupil"></ellipse><circle cx="138" cy="66" r="2" class="dragon-eye-accent"></circle><path d="M82 80l50-8" fill="none" stroke="var(--eyec,#fff)" stroke-width="2" stroke-linecap="round"></path></symbol>
-<symbol id="i-core" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 7.5l3.5 4.5-3.5 4.5L8.5 12z"></path></symbol>
-<symbol id="i-scepter" viewBox="0 0 24 24"><path d="M4 20l9-9"></path><path d="M17 3l4 4-4 4-4-4z"></path></symbol>
-<symbol id="i-flute" viewBox="0 0 24 24"><path d="M3 17L17 3l4 4L7 21z"></path><path d="M9 15v.01M12 12v.01M15 9v.01"></path></symbol>
-<symbol id="i-shears" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"></circle><circle cx="6" cy="18" r="2.5"></circle><path d="M8 7.5L21 17M8 16.5L21 7"></path></symbol>
-<symbol id="i-chest" viewBox="0 0 24 24"><path d="M8 3L3 7l2 5 3-1v10h8V11l3 1 2-5-5-4c-1 2-2 3-4 3S9 5 8 3z"></path></symbol>
-<symbol id="i-feather" viewBox="0 0 24 24"><path d="M20 4C10 4 5 9 5 15l-2 6M5 16c7 0 13-4 15-12-4 2-8 2-11 5"></path></symbol>
-<symbol id="i-bone" viewBox="0 0 24 24"><path d="M8.5 15.5l7-7"></path><circle cx="6.5" cy="14.5" r="2.2"></circle><circle cx="9.5" cy="17.5" r="2.2"></circle><circle cx="14.5" cy="6.5" r="2.2"></circle><circle cx="17.5" cy="9.5" r="2.2"></circle></symbol>
-<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3c4 0 8 3 8 8 0 5-4 9-8 10-4-1-8-5-8-10 0-5 4-8 8-8z"></path><path d="M12 7v10"></path></symbol>
-<symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="2.5"></circle><path d="M12 5a7 7 0 0 1 7 7"></path></symbol>
-<symbol id="i-egg" viewBox="0 0 24 24"><path d="M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z"></path><path d="M7.5 14c3 1.5 6 1.5 9 0"></path></symbol>
-<symbol id="i-wing" viewBox="0 0 24 24"><path d="M2 19C3 10 9 5 22 4c-1 4-3 6-6 7 2 0 3 0 5 0-2 4-6 6-10 6 1 0 2 0 3-1-4 0-8 1-12 3z"></path></symbol>
-<symbol id="i-follow" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"></circle><circle cx="17" cy="12" r="2.5"></circle><path d="M9 12h5M12 9l3 3-3 3"></path></symbol>
+<symbol id="head" viewBox="0 0 160 120"><path d="M58 40C44 28 28 22 10 24c14 6 26 16 34 30z"/><path d="M80 38C70 22 56 12 40 8c12 10 20 24 24 38z"/><path d="M28 90C20 66 34 44 62 40c22-4 50 4 78 22 10 6 8 16-2 18l-26 2c-6 12-22 16-36 12-14 8-30 4-48-4z"/><path d="M30 92l-14 14 22-6zM46 98l-6 16 18-12z"/><path d="M86 52c10-8 26-4 36 6-12 2-26 0-36-6z" class="dragon-eye-accent"/><ellipse cx="104" cy="55" rx="2.6" ry="5.5" transform="rotate(-62 104 55)" class="dragon-eye-pupil"/><circle cx="138" cy="66" r="2" class="dragon-eye-accent"/><path d="M82 80l50-8" fill="none" stroke="var(--eyec,#fff)" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-core" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7.5l3.5 4.5-3.5 4.5L8.5 12z"/></symbol>
+<symbol id="i-scepter" viewBox="0 0 24 24"><path d="M4 20l9-9"/><path d="M17 3l4 4-4 4-4-4z"/></symbol>
+<symbol id="i-flute" viewBox="0 0 24 24"><path d="M3 17L17 3l4 4L7 21z"/><path d="M9 15v.01M12 12v.01M15 9v.01"/></symbol>
+<symbol id="i-shears" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 7.5L21 17M8 16.5L21 7"/></symbol>
+<symbol id="i-chest" viewBox="0 0 24 24"><path d="M8 3L3 7l2 5 3-1v10h8V11l3 1 2-5-5-4c-1 2-2 3-4 3S9 5 8 3z"/></symbol>
+<symbol id="i-feather" viewBox="0 0 24 24"><path d="M20 4C10 4 5 9 5 15l-2 6M5 16c7 0 13-4 15-12-4 2-8 2-11 5"/></symbol>
+<symbol id="i-bone" viewBox="0 0 24 24"><path d="M8.5 15.5l7-7"/><circle cx="6.5" cy="14.5" r="2.2"/><circle cx="9.5" cy="17.5" r="2.2"/><circle cx="14.5" cy="6.5" r="2.2"/><circle cx="17.5" cy="9.5" r="2.2"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3c4 0 8 3 8 8 0 5-4 9-8 10-4-1-8-5-8-10 0-5 4-8 8-8z"/><path d="M12 7v10"/></symbol>
+<symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 5a7 7 0 0 1 7 7"/></symbol>
+<symbol id="i-egg" viewBox="0 0 24 24"><path d="M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z"/><path d="M7.5 14c3 1.5 6 1.5 9 0"/></symbol>
+<symbol id="i-wing" viewBox="0 0 24 24"><path d="M2 19C3 10 9 5 22 4c-1 4-3 6-6 7 2 0 3 0 5 0-2 4-6 6-10 6 1 0 2 0 3-1-4 0-8 1-12 3z"/></symbol>
+<symbol id="i-follow" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="17" cy="12" r="2.5"/><path d="M9 12h5M12 9l3 3-3 3"/></symbol>
 </defs></svg>
 <header class="site"><div class="wrap bar">
 <a class="brand" href="index.html" aria-label="DragonMounts 2 Wiki, home"><img class="mark" src="textures/pack_icon.png" alt=""><span>DragonMounts 2</span></a>
 <div class="tools">
-<button class="ibtn menu-toggle" id="nav-toggle" type="button" aria-label="Open guide menu" aria-controls="nav-drawer" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
-<button class="sbtn" id="sbtn" type="button" aria-label="Search the wiki"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><span>Search</span><kbd>/</kbd></button>
-<button class="ibtn" id="theme" type="button" aria-label="Switch to light mode" aria-pressed="true" title="Switch to light mode"><svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg><svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"></path></svg></button>
+<button class="ibtn menu-toggle" id="nav-toggle" type="button" aria-label="Open guide menu" aria-controls="nav-drawer" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<button class="sbtn" id="sbtn" type="button" aria-label="Search the wiki"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Search</span><kbd>/</kbd></button>
+<button class="ibtn" id="theme" type="button" aria-label="Switch between light and dark mode"><svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></button>
 </div></div></header>
 <dialog class="nav-drawer" id="nav-drawer" aria-labelledby="nav-title">
-<div class="drawer-head"><b id="nav-title">Explore the wiki</b><button class="ibtn" id="nav-close" type="button" aria-label="Close guide menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div>
-<nav aria-label="Guide pages"><section class="guide-group"><h2>Start here</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li></ul></section><section class="guide-group"><h2>Dragon guide</h2><ul><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Eggs and taming</a></li><li><a href="flight.html">Riding and flight</a></li></ul></section><section class="guide-group"><h2>Reference</h2><ul><li><a href="items.html">Items and equipment</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ and glossary</a></li></ul></section></nav>
-<section class="drawer-section"><h2>On this page</h2><ul><li><a href="#hatching">Hatching</a></li><li><a href="#taming">Taming and breeding</a></li><li><a href="#transformations">Block transformations</a></li><li><a href="#lightning">Lightning transformations</a></li></ul></section>
+<div class="drawer-head"><b id="nav-title">Explore the wiki</b><button class="ibtn" id="nav-close" type="button" aria-label="Close guide menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+<nav aria-label="Guide pages"><section class="guide-group"><h2>Start here</h2><ul><li><a href="index.html" aria-current="page">Overview</a></li><li><a href="install.html">Install</a></li></ul></section><section class="guide-group"><h2>Dragon guide</h2><ul><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Eggs and taming</a></li><li><a href="flight.html">Riding and flight</a></li></ul></section><section class="guide-group"><h2>Reference</h2><ul><li><a href="items.html">Items and equipment</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ and glossary</a></li></ul></section></nav>
+<section class="drawer-section"><h2>On this page</h2><ul><li><a href="#tasks">Browse the guide</a></li><li><a href="#meet">Meet the dragons</a></li><li><a href="#help">Contribute</a></li></ul></section>
 </dialog>
-<main id="main" class="editor-editing">
-<div class="phead"><div class="wrap"><h1>Eggs and taming</h1><p class="lede">How to hatch, tame, and transform eggs in public release v1.2.5.1.</p></div></div>
-<div class="wrap layout has-sidebar">
-<aside class="guide-sidebar"><nav aria-label="Wiki chapters"><section class="guide-group"><h2>Start here</h2><ul><li><a href="index.html">Overview</a></li><li><a href="install.html">Install</a></li></ul></section><section class="guide-group"><h2>Dragon guide</h2><ul><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Eggs and taming</a></li><li><a href="flight.html">Riding and flight</a></li></ul></section><section class="guide-group"><h2>Reference</h2><ul><li><a href="items.html">Items and equipment</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ and glossary</a></li></ul></section></nav><section class="guide-group"><h2>On this page</h2><ul><li><a href="#hatching">Hatching</a></li><li><a href="#taming">Taming and breeding</a></li><li><a href="#transformations">Block transformations</a></li><li><a href="#lightning">Lightning transformations</a></li></ul></section></aside>
-<article>
+<main id="main">
+<section class="edition-picker" id="edition-picker" aria-labelledby="edition-title">
+<div class="wrap edition-picker-inner">
+<p class="eyebrow">DRAGON MOUNTS 2 WIKI</p>
+<h1 id="edition-title">Which Minecraft edition do you play?</h1>
+<p class="lede">Choose your edition to open the right guide. We’ll remember your choice on this device, and you can change it whenever you like.</p>
+<div class="edition-options">
+<button class="edition-card" id="select-bedrock" type="button">
+<span class="edition-tag">GUIDES AVAILABLE</span>
+<strong>Minecraft Bedrock</strong>
+<span>Open the Bedrock guides for installing the add-on, dragons, eggs, flight, and more.</span>
+</button>
+<a class="edition-card" id="select-java" href="java.html">
+<span class="edition-tag">STARTER SECTION</span>
+<strong>Minecraft Java</strong>
+<span>Open the Java section. It is a blank area ready for Java-specific guides.</span>
+</a>
+</div>
+</div>
+</section>
+<div id="bedrock-content" hidden>
+<div class="edition-status"><span>Showing Minecraft Bedrock guides</span><button id="change-edition" type="button">Change edition</button></div>
+<section class="home-hero">
+<div class="wrap home-hero-inner">
+<div class="home-hero-copy">
+<p class="eyebrow">BEDROCK FIELD GUIDE</p>
+<h1>DragonMounts 2 Wiki</h1>
+<p class="lede">A field guide to finding, raising, and flying dragons in Minecraft Bedrock.</p>
+<div class="hero-actions"><a class="btn" href="dragons.html#species">Explore the dragons</a><a class="btn ghost" href="breeding.html#hatching">Start with an egg</a><a class="btn ghost" href="install.html#downloads">Download options</a></div>
+<p class="hero-release"><span>PUBLIC RELEASE</span><b>v1.2.5.1</b><span>Minecraft Bedrock 26.40+</span></p>
+</div>
+<figure class="home-hero-art"><img src="textures/dragon.egg/dragonmounts2.dragon_egg_ender.png" alt="Ender Dragon egg from the Dragon Mounts 2 pack" width="512" height="512"><figcaption>ENDER DRAGON EGG</figcaption></figure>
+</div>
+</section>
+<div class="wrap home-note"><p class="note"><strong>Dragon Mounts 2 project guide.</strong> Mechanics and species are documented for the public v1.2.5.1 release. Check the <a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki">project development wiki</a> for technical notes and the <a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all">official download listing</a> for current game-version support.</p></div>
+<div class="wrap home-content">
+<h2 id="tasks"><a class="anchor" href="#tasks" aria-label="Link to this section">#</a>Browse the guide by goal</h2>
+<section class="task-group"><h3>Get started</h3><div class="tasks"><a href="install.html"><b>Install the add-on</b><span>Set up the packs in a Bedrock world.</span></a><a href="install.html#downloads"><b>Download options</b><span>Choose from the listed Dragon Mounts 2 download sites.</span></a><a href="dragons.html#species"><b>Find an egg</b><span>Look for nests in the Overworld, Nether, and End.</span></a><a href="breeding.html#hatching"><b>Hatch an egg</b><span>Interact until particles appear; hatching takes about 20 minutes.</span></a></div></section><section class="task-group"><h3>Raise and ride</h3><div class="tasks"><a href="breeding.html#taming"><b>Tame a dragon</b><span>Feed a wild dragon raw fish, except pufferfish.</span></a><a href="flight.html#controls"><b>Ride and fly</b><span>Equip a saddle, mount, then press Jump to take off.</span></a><a href="breeding.html#transformations"><b>Breed and transform eggs</b><span>Use fish to breed dragons; use blocks or lightning to transform eggs.</span></a></div></section><section class="task-group"><h3>Look things up</h3><div class="tasks"><a href="dragons.html#species"><b>Browse all 17 dragons</b><span>Compare egg images, breath types, natural nests, and transformations.</span></a><a href="items.html"><b>Items and equipment</b><span>Dragon scales, armor, tools, flutes, and more.</span></a><a href="faq.html"><b>FAQ and glossary</b><span>Find quick answers and common terms.</span></a><a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all"><b>Release details</b><span>Check supported game versions and current release notes.</span></a></div></section>
 
-<h2 id="hatching"><a class="anchor" href="#hatching" aria-label="Link to this section">#</a>Hatching an egg</h2>
-<p>Dragon eggs are found in naturally generated nests across the Overworld, Nether, and End. Interact with an egg until particles appear; allow about 20 minutes for it to hatch.</p>
-<p><a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki/Dragons">Official dragon and nest guide</a></p>
+<h2 id="meet"><a class="anchor" href="#meet" aria-label="Link to this section">#</a>Meet the dragons</h2>
+<div class="three">
+<div><h3>Forest Dragon</h3><p>Preview Nature, Cold, Jungle, and Warm appearances.</p><a href="dragons.html#forest">Explore the Forest Dragon</a></div>
+<div><h3>Aether Dragon</h3><p>Preview Aethra, Breeze, and Wind appearances.</p><a href="dragons.html#aether">Explore the Aether Dragon</a></div>
+<div><h3>All 17 species</h3><p>Compare eggs, breath types, natural nests, and transformations.</p><a href="dragons.html#species">Browse the roster</a></div>
+</div>
 
-<h2 id="taming"><a class="anchor" href="#taming" aria-label="Link to this section">#</a>Taming and breeding</h2>
-<dl class="facts"><dt>Taming food</dt><dd>Any raw fish except pufferfish</dd><dt>Tame chance</dt><dd>10% per attempt</dd><dt>Breeding food</dt><dd>Any raw fish except pufferfish</dd><dt>Healing</dt><dd>Any meat; 2-4 HP</dd></dl>
-
-
-<figure class="editor-video"><iframe src="https://www.youtube-nocookie.com/embed/vdNj07vRxf4" title="YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure><h2 id="transformations" class=""><a class="anchor" href="#transformations" aria-label="Link to this section">#</a>Block transformations</h2>
-<p>Place an egg on the listed block and wait about 5 minutes. Unless noted, any egg can be the starting egg.</p>
-<div class="tbl"><table><thead><tr><th scope="col">Block</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Lava</th><td>Fire Dragon Egg</td></tr><tr><th scope="row">Water</th><td>Water Dragon Egg</td></tr><tr><th scope="row">Snow, Ice, Blue Ice, Packed Ice</th><td>Ice Dragon Egg</td></tr><tr><th scope="row">Bone Block</th><td>Skeleton Dragon Egg</td></tr><tr><th scope="row">Mossy Cobblestone or Soul Sand</th><td>Zombie Dragon Egg</td></tr><tr><th scope="row">Terracotta or Sand</th><td>Terra Dragon Egg</td></tr><tr><th scope="row">End Stone</th><td>Ender Dragon Egg</td></tr><tr><th scope="row">Daylight Sensor (day mode)</th><td>Sunlight Dragon Egg</td></tr><tr><th scope="row">Inverted Daylight Sensor (night mode)</th><td>Moonlight Dragon Egg</td></tr><tr><th scope="row">Bookshelves (Ender egg only)</th><td>Enchant Dragon Egg</td></tr></tbody></table></div><h2 class="">Lightning transformations</h2>
-<p class="">Lightning transforms these eggs in about 2 seconds. A natural storm or a Trident with Channeling can provide the strike.</p>
-<div class="tbl"><table><thead><tr><th scope="col">Starting egg</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Water Dragon Egg</th><td>Storm Dragon Egg</td></tr><tr><th scope="row">Skeleton Dragon Egg</th><td>Wither Dragon Egg</td></tr><tr><th scope="row">Moonlight Dragon Egg</th><td>Dark Dragon Egg</td></tr></tbody></table></div><figure class="editor-video"><iframe src="https://www.youtube-nocookie.com/embed/GulxOXMwWVU" title="YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
-
-
-</article>
+<h2 id="help"><a class="anchor" href="#help" aria-label="Link to this section">#</a>Contribute</h2>
+<p>Report missing or outdated information to help keep the guide accurate.</p>
+<p class="cta contribute-actions"><span data-link="issues" hidden><a class="btn sm" href="#">Report a mistake</a></span> <span data-link="discord" hidden><a class="btn sm ghost" href="#">Ask on Discord</a></span></p>
+</div>
 </div>
 </main>
+<script>
+(() => {
+  const key = "dm2-edition";
+  const picker = document.querySelector("#edition-picker");
+  const bedrock = document.querySelector("#bedrock-content");
+  const params = new URLSearchParams(window.location.search);
+  let saved = null;
+  try { saved = localStorage.getItem(key); } catch (error) {}
+  const showBedrock = (remember) => {
+    picker.hidden = true;
+    bedrock.hidden = false;
+    if (remember) { try { localStorage.setItem(key, "bedrock"); } catch (error) {} }
+  };
+  if (params.get("choose") === "1") {
+    try { localStorage.removeItem(key); } catch (error) {}
+  } else if (params.get("edition") === "bedrock" || window.location.hash) {
+    showBedrock(true);
+  } else if (saved === "java") {
+    window.location.replace("java.html");
+  } else if (saved === "bedrock") {
+    showBedrock(false);
+  }
+  document.querySelector("#select-bedrock").addEventListener("click", () => showBedrock(true));
+  document.querySelector("#select-java").addEventListener("click", () => {
+    try { localStorage.setItem(key, "java"); } catch (error) {}
+  });
+  document.querySelector("#change-edition").addEventListener("click", () => {
+    try { localStorage.removeItem(key); } catch (error) {}
+    bedrock.hidden = true;
+    picker.hidden = false;
+    window.history.replaceState(null, "", window.location.pathname);
+    picker.scrollIntoView({ block: "start" });
+  });
+  if (window.location.hash && !bedrock.hidden) {
+    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+    if (target) requestAnimationFrame(() => target.scrollIntoView());
+  }
+})();
+</script>
 <footer class="foot"><div class="wrap">
 <div class="footgrid">
 <div><a class="brand" href="index.html"><img class="mark" src="textures/pack_icon.png" alt=""><span>DragonMounts 2 Wiki</span></a><p>Project wiki for the public Minecraft Bedrock v1.2.5.1 release.</p></div>
 <div><h4>Guide</h4><ul><li><a href="install.html">Install</a></li><li><a href="dragons.html">Dragons</a></li><li><a href="breeding.html">Breeding</a></li><li><a href="flight.html">Flight</a></li><li><a href="items.html">Items</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
 <div><h4>Official sources</h4><ul>
 <li><a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki">Project wiki</a></li>
-<li data-link="curseforge"><a href="https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all">CurseForge page</a></li>
-<li data-link="discord"><a href="https://discord.gg/Ewm8aTTJ3K">Discord</a></li></ul></div>
+<li data-link="curseforge" hidden><a href="#">CurseForge page</a></li>
+<li data-link="discord" hidden><a href="#">Discord</a></li></ul></div>
 <div><h4>This wiki</h4><ul>
-<li data-link="issues"><a href="https://github.com/DragonMounts-Team/Dragon-Mounts-2-Wiki/issues/new">Report a mistake</a></li>
-<li data-link="repo"><a href="https://github.com/DragonMounts-Team/Dragon-Mounts-2-Wiki">Source on GitHub</a></li></ul></div>
+<li data-link="issues" hidden><a href="#">Report a mistake</a></li>
+<li data-link="repo" hidden><a href="#">Source on GitHub</a></li></ul></div>
 </div>
 <small>The gameplay guides describe v1.2.5.1; the Changelog also archives historical project releases. Check the official download listing for current game-version support.</small>
 </div></footer>
-<div id="sx" hidden=""><div class="sbox" role="dialog" aria-modal="true" aria-label="Search the wiki"><input id="sq" type="search" placeholder="Search dragons, eggs, taming, riding, equipment" aria-label="Search the wiki" autocomplete="off"><div id="sres"></div><div class="sfoot">Arrow keys to move, Enter to open, Esc to close</div></div></div>
+<div id="sx" hidden><div class="sbox" role="dialog" aria-modal="true" aria-label="Search the wiki"><input id="sq" type="search" placeholder="Search dragons, eggs, taming, riding, equipment" aria-label="Search the wiki" autocomplete="off"><div id="sres"></div><div class="sfoot">Arrow keys to move, Enter to open, Esc to close</div></div></div>
 <script src="assets/config.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
-
-
-</body></html>
+</body>
+</html>

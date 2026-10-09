@@ -4,6 +4,7 @@ const path = require("node:path");
 
 const root = path.resolve(__dirname, "..");
 const errors = [];
+const adCode = /\b(?:adsbygoogle|googlesyndication|googleadservices|doubleclick\.net|adservice\.google|amazon-adsystem\.com|taboola\.com|outbrain\.com)\b/i;
 const trackedHtml = execFileSync("git", ["ls-files", "--", "*.html"], {
   cwd: root,
   encoding: "utf8"
@@ -32,6 +33,7 @@ function hasExactPath(relativePath) {
 for (const file of trackedHtml) {
   const contents = fs.readFileSync(path.join(root, file), "utf8");
   pages.set(file, contents);
+  if (adCode.test(contents)) fail(`${file}: third-party advertising code is not allowed`);
   const ids = [...contents.matchAll(/\b(?:id|name)="([^"]+)"/g)].map(match => match[1]);
   const duplicates = new Set(ids.filter((id, index) => ids.indexOf(id) !== index));
   for (const id of duplicates) fail(`${file}: duplicate anchor "${id}"`);
@@ -82,7 +84,10 @@ for (const [file, contents] of pages) {
 }
 
 for (const file of ["assets/app.js", "assets/config.js", "assets/data.js"]) {
-  const result = spawnSync(process.execPath, ["--check", path.join(root, file)], { encoding: "utf8" });
+  const absolutePath = path.join(root, file);
+  const contents = fs.readFileSync(absolutePath, "utf8");
+  if (adCode.test(contents)) fail(`${file}: third-party advertising code is not allowed`);
+  const result = spawnSync(process.execPath, ["--check", absolutePath], { encoding: "utf8" });
   if (result.status !== 0) fail(`${file}: JavaScript syntax check failed\n${result.stderr || result.stdout}`);
 }
 
