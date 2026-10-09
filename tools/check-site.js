@@ -49,6 +49,15 @@ else {
     if (!home.includes(`id="${id}"`)) fail(`index.html is missing the edition control "${id}"`);
   }
 }
+if (!pages.has("breeding.html")) fail("The Wiki is missing the eggs-and-taming guide");
+else {
+  const eggGuide = pages.get("breeding.html");
+  for (const videoId of ["vdNj07vRxf4", "GulxOXMwWVU"]) {
+    if (!eggGuide.includes(`youtube-nocookie.com/embed/${videoId}`)) {
+      fail(`breeding.html is missing the preserved YouTube video "${videoId}"`);
+    }
+  }
+}
 if (!fs.existsSync(path.join(root, ".nojekyll"))) fail("GitHub Pages root is missing .nojekyll");
 
 for (const [file, contents] of pages) {

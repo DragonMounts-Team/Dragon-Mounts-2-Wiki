@@ -421,6 +421,17 @@ def inner_page(file, title, lede, desc, sections, body_html, extra_layout_class=
 def legacy(text):
     return f'<div class="note old"><p><strong>From earlier versions (v1.2.x).</strong> {text}</p></div>'
 
+def youtube_embed(video_id, title):
+    video_url = f"https://www.youtube-nocookie.com/embed/{video_id}"
+    watch_url = f"https://www.youtube.com/watch?v={video_id}"
+    return (
+        f'<figure class="editor-video"><iframe src="{video_url}" title="{e(title)}" '
+        'width="560" height="315" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" '
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '
+        f'allowfullscreen></iframe><figcaption><a class="editor-video-link" href="{watch_url}" '
+        'target="_blank" rel="noopener noreferrer">Watch on YouTube</a></figcaption></figure>'
+    )
+
 def write(path, content):
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -655,6 +666,7 @@ def build_breeding():
 {h2("taming", "Taming and breeding", f)}
 <dl class="facts"><dt>Taming food</dt><dd>Any raw fish except pufferfish</dd><dt>Tame chance</dt><dd>10% per attempt</dd><dt>Breeding food</dt><dd>Any raw fish except pufferfish</dd><dt>Healing</dt><dd>Any meat; 2-4 HP</dd></dl>
 <p>These values come from the <a href="{OFFICIAL_DRAGONS}">official Dragons guide</a>.</p>
+{youtube_embed("vdNj07vRxf4", "Dragon taming and breeding")}
 
 {h2("transformations", "Block transformations", f)}
 <p>Place an egg on the listed block and wait about 5 minutes. Unless noted, any egg can be the starting egg.</p>
@@ -663,6 +675,7 @@ def build_breeding():
 {h2("lightning", "Lightning transformations", f)}
 <p>Lightning transforms these eggs in about 2 seconds. A natural storm or a Trident with Channeling can provide the strike.</p>
 <div class="tbl"><table><thead><tr><th scope="col">Starting egg</th><th scope="col">Result</th></tr></thead><tbody>{lightning_rows}</tbody></table></div>
+{youtube_embed("GulxOXMwWVU", "Dragon egg lightning transformations")}
 <p class="source-line">Source: <a href="{OFFICIAL_DRAGONS}">Official Dragon Mounts 2 Dragons guide</a>.</p>
 """
     write(f, inner_page(f, "Eggs and taming", f"How to hatch, tame, and transform eggs in public release v{VERSION}.",
