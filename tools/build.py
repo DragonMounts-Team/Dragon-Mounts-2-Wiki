@@ -496,7 +496,7 @@ def build_home():
 <div class="hero-actions"><a class="btn" href="dragons.html#species">Explore the dragons</a><a class="btn ghost" href="breeding.html#hatching">Start with an egg</a><a class="btn ghost" href="install.html#downloads">Download options</a></div>
 <p class="hero-release"><span>PUBLIC RELEASE</span><b>v{VERSION}</b><span>Minecraft Bedrock {BEDROCK_VERSION}+</span></p>
 </div>
-<figure class="home-hero-art"><img src="textures/dragon.egg/dragonmounts2.dragon_egg_ender.png" alt="Ender Dragon egg from the Dragon Mounts 2 pack" width="512" height="512"><figcaption>ENDER DRAGON EGG</figcaption></figure>
+<figure class="home-hero-art"><img src="textures/entity/chibi-ThumbnailSkin-idle.gif" alt="Chibi assistant" width="512" height="512"><figcaption>CHIBI ASSISTANT</figcaption></figure>
 </div>
 </section>
 <div class="wrap home-note"><p class="note"><strong>Dragon Mounts 2 project guide.</strong> Mechanics and species are documented for the public v{VERSION} release. Check the <a href="{OFFICIAL_WIKI}">project development wiki</a> for technical notes and the <a href="{OFFICIAL_FILES}">official download listing</a> for current game-version support.</p></div>
