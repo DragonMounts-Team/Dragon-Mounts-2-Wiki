@@ -10,8 +10,14 @@
     if (typeof value !== "string" || !value.trim()) return "";
     try {
       var url = new URL(value, window.location.href);
-      if ((url.protocol !== "http:" && url.protocol !== "https:") ||
-          (!allowExternal && url.origin !== window.location.origin)) {
+      var localFileLink = window.location.protocol === "file:" &&
+        url.protocol === "file:" &&
+        !/^(?:[a-z][a-z0-9+.-]*:|\/)/i.test(value) &&
+        url.pathname.slice(0, url.pathname.lastIndexOf("/") + 1) ===
+          window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/") + 1);
+      if ((url.protocol !== "http:" && url.protocol !== "https:" && !localFileLink) ||
+          (url.protocol === "file:" && !localFileLink) ||
+          (!allowExternal && url.origin !== window.location.origin && !localFileLink)) {
         console.warn("Ignoring unsafe Wiki link:", value);
         return "";
       }
