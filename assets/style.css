@@ -1,15 +1,15 @@
 /* Dragon Mounts 2 Wiki: shared styles. No external fonts or libraries. */
 :root{
-  --bg:#f7f3fa;--panel:#fff;--soft:#eee7f5;--fg:#251b2d;--mute:#685e71;--line:#ded4e7;
+  --bg:#f4edf9;--panel:#fdfaff;--soft:#eadcf4;--fg:#291a35;--mute:#665173;--line:#d8c7e4;
   --a:var(--wiki-accent-light,#7543a5);--on-a:#fff;--at:color-mix(in srgb,var(--a) 62%,var(--fg));
   --feature-bg:var(--wiki-feature-light,#fff);
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --r:6px;--hh:64px;color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#2b2d30;--panel:#34373b;--soft:#404449;--fg:#f1f1f1;--mute:#c0c3c7;--line:#50545a;--a:var(--wiki-accent-dark,#c393ed);--on-a:#23172b;--feature-bg:var(--wiki-feature-dark,#222426);color-scheme:dark}}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#211629;--panel:#2b1e35;--soft:#3b2948;--fg:#f5effa;--mute:#c6b5d2;--line:#51405f;--a:var(--wiki-accent-dark,#d2a2f5);--on-a:#251530;--feature-bg:var(--wiki-feature-dark,#30203e);color-scheme:dark}}
 :root[data-theme="light"]{color-scheme:light}
-:root[data-theme="dark"]{--bg:#2b2d30;--panel:#34373b;--soft:#404449;--fg:#f1f1f1;--mute:#c0c3c7;--line:#50545a;--a:var(--wiki-accent-dark,#c393ed);--on-a:#23172b;--feature-bg:var(--wiki-feature-dark,#222426);color-scheme:dark}
+:root[data-theme="dark"]{--bg:#211629;--panel:#2b1e35;--soft:#3b2948;--fg:#f5effa;--mute:#c6b5d2;--line:#51405f;--a:var(--wiki-accent-dark,#d2a2f5);--on-a:#251530;--feature-bg:var(--wiki-feature-dark,#30203e);color-scheme:dark}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + env(safe-area-inset-top,0px) + 1.25rem);-webkit-text-size-adjust:100%}
