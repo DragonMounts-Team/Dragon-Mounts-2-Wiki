@@ -42,8 +42,11 @@ for (const file of trackedHtml) {
 if (!pages.has("index.html")) fail("GitHub Pages root is missing index.html");
 else {
   const home = pages.get("index.html");
-  if (!/<title>DragonMounts 2 Wiki<\/title>/.test(home)) {
+  if (!/<title>Dragon Mounts 2 Wiki<\/title>/.test(home)) {
     fail("index.html must be the edition-selection homepage");
+  }
+  if (/DragonMounts 2/.test(home)) {
+    fail('index.html uses the joined product name; spell it "Dragon Mounts 2"');
   }
   for (const id of ["edition-picker", "select-bedrock", "select-java", "bedrock-content"]) {
     if (!home.includes(`id="${id}"`)) fail(`index.html is missing the edition control "${id}"`);
@@ -58,9 +61,17 @@ else {
     }
   }
 }
+for (const file of ["java.html", "404.html"]) {
+  if (pages.has(file) && pages.get(file).includes('<svg class="svg-sprite"')) {
+    fail(`${file}: unused shared icon sprite adds unnecessary markup`);
+  }
+}
 if (!fs.existsSync(path.join(root, ".nojekyll"))) fail("GitHub Pages root is missing .nojekyll");
 
 for (const [file, contents] of pages) {
+  if (/DragonMounts 2/.test(contents)) {
+    fail(`${file} uses the joined product name; spell it "Dragon Mounts 2"`);
+  }
   for (const match of contents.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const reference = match[1].replaceAll("&amp;", "&");
     if (/^(?:https?:|mailto:|tel:|data:|javascript:|\/\/)/i.test(reference)) continue;

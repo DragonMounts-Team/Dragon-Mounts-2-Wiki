@@ -1,4 +1,4 @@
-# DragonMounts 2 Wiki
+# Dragon Mounts 2 Wiki
 
 The Dragon Mounts 2 project wiki starts by asking whether you play Minecraft Bedrock or Java. Bedrock has the current guides for the public v1.2.5.1 release; Java has a separate starter section ready for future guides.
 

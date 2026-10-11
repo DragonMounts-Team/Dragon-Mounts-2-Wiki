@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Builds the DragonMounts 2 wiki into plain HTML files.
+Builds the Dragon Mounts 2 wiki into plain HTML files.
 
 You do NOT need to run this to publish the site: the generated files are already
 in the project root. Run it only if you want to change content in bulk:
@@ -19,7 +19,7 @@ SITE_URL = ap.parse_args().url.rstrip("/")
 
 VERSION = "1.2.5.1"
 BEDROCK_VERSION = "26.40"
-SITE = "DragonMounts 2 Wiki"
+SITE = "Dragon Mounts 2 Wiki"
 OFFICIAL_WIKI = "https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki"
 OFFICIAL_DRAGONS = OFFICIAL_WIKI + "/Dragons"
 OFFICIAL_ITEMS = OFFICIAL_WIKI + "/Items"
@@ -329,7 +329,7 @@ def guide_navigation(file):
     return "".join(groups)
 
 # ------------------------------------------------------------ page shell
-def head(file, title, desc, theme_hero=False):
+def head(file, title, desc, include_sprite=True):
     full_title = SITE if file == "index.html" else f"{title} | {SITE}"
     canon = f'<link rel="canonical" href="{SITE_URL}/{"" if file == "index.html" else file}">' if SITE_URL else ""
     og = ""
@@ -351,7 +351,7 @@ def head(file, title, desc, theme_hero=False):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-{SPRITE}
+{SPRITE if include_sprite else ""}
 """
 
 def header(file, sections=()):
@@ -359,7 +359,7 @@ def header(file, sections=()):
     section_nav = (f'<section class="drawer-section"><h2>On this page</h2><ul>{section_links}</ul></section>'
                    if section_links else "")
     return f"""<header class="site"><div class="wrap bar">
-<a class="brand" href="index.html" aria-label="DragonMounts 2 Wiki, home">{MARK}<span>DragonMounts 2</span></a>
+<a class="brand" href="index.html" aria-label="Dragon Mounts 2 Wiki, home">{MARK}<span>Dragon Mounts 2</span></a>
 <div class="tools">
 <button class="ibtn menu-toggle" id="nav-toggle" type="button" aria-label="Open guide menu" aria-controls="nav-drawer" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
 <button class="sbtn" id="sbtn" type="button" aria-label="Search the wiki"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Search</span><kbd>/</kbd></button>
@@ -384,7 +384,7 @@ def footer():
     nav = "".join(f'<li><a href="{f}">{l}</a></li>' for f, l, _ in PAGES)
     return f"""<footer class="foot"><div class="wrap">
 <div class="footgrid">
-<div><a class="brand" href="index.html">{MARK}<span>DragonMounts 2 Wiki</span></a><p>Project wiki for the public Minecraft Bedrock v{VERSION} release.</p></div>
+<div><a class="brand" href="index.html">{MARK}<span>Dragon Mounts 2 Wiki</span></a><p>Project wiki for the public Minecraft Bedrock v{VERSION} release.</p></div>
 <div><h4>Guide</h4><ul>{nav}</ul></div>
 <div><h4>Official sources</h4><ul>
 <li><a href="{OFFICIAL_WIKI}">Project wiki</a></li>
@@ -487,16 +487,16 @@ def build_home():
 </section>
 <div id="bedrock-content" hidden>
 <div class="edition-status"><span>Showing Minecraft Bedrock guides</span><button id="change-edition" type="button">Change edition</button></div>
-<section class="home-hero">
-<div class="wrap home-hero-inner">
-<div class="home-hero-copy">
+<section class="home-feature">
+<div class="wrap home-feature-inner">
+<div class="home-feature-copy">
 <p class="eyebrow">BEDROCK FIELD GUIDE</p>
-<h1>DragonMounts 2 Wiki</h1>
+<h1>Dragon Mounts 2 Wiki</h1>
 <p class="lede">A field guide to finding, raising, and flying dragons in Minecraft Bedrock.</p>
-<div class="hero-actions"><a class="btn" href="dragons.html#species">Explore the dragons</a><a class="btn ghost" href="breeding.html#hatching">Start with an egg</a><a class="btn ghost" href="install.html#downloads">Download options</a></div>
-<p class="hero-release"><span>PUBLIC RELEASE</span><b>v{VERSION}</b><span>Minecraft Bedrock {BEDROCK_VERSION}+</span></p>
+<div class="feature-actions"><a class="btn" href="dragons.html#species">Explore the dragons</a><a class="btn ghost" href="breeding.html#hatching">Start with an egg</a><a class="btn ghost" href="install.html#downloads">Download options</a></div>
+<p class="feature-release"><span>PUBLIC RELEASE</span><b>v{VERSION}</b><span>Minecraft Bedrock {BEDROCK_VERSION}+</span></p>
 </div>
-<figure class="home-hero-art"><img src="textures/entity/chibi-ThumbnailSkin-idle.gif" alt="Chibi assistant" width="512" height="512"><figcaption>CHIBI ASSISTANT</figcaption></figure>
+<figure class="home-icon"><img src="textures/entity/chibi-ThumbnailSkin-idle.gif" alt="Chibi assistant" width="512" height="512"><figcaption>CHIBI ASSISTANT</figcaption></figure>
 </div>
 </section>
 <div class="wrap home-note"><p class="note"><strong>Dragon Mounts 2 project guide.</strong> Mechanics and species are documented for the public v{VERSION} release. Check the <a href="{OFFICIAL_WIKI}">project development wiki</a> for technical notes and the <a href="{OFFICIAL_FILES}">official download listing</a> for current game-version support.</p></div>
@@ -522,9 +522,9 @@ def build_home():
 
 def build_java():
     f = "java.html"
-    body = head(f, "Minecraft Java", "The Java edition section of the DragonMounts 2 Wiki, ready for future Java-specific guides.") + """<header class="site">
+    body = head(f, "Minecraft Java", "The Java edition section of the Dragon Mounts 2 Wiki, ready for future Java-specific guides.", include_sprite=False) + """<header class="site">
   <div class="wrap bar">
-    <a class="brand" href="index.html?choose=1"><img class="mark" src="textures/pack_icon.png" alt=""><span>DragonMounts 2 Wiki</span></a>
+    <a class="brand" href="index.html?choose=1"><img class="mark" src="textures/pack_icon.png" alt=""><span>Dragon Mounts 2 Wiki</span></a>
     <a class="btn sm" href="index.html?choose=1">Change edition</a>
   </div>
 </header>
@@ -602,8 +602,8 @@ def build_install():
 {tr_html}
 <p class="mute troubleshooting-note">Still stuck? <span data-link="discord" hidden><a href="#">Ask on Discord</a></span><span data-link="issues" hidden> or <a href="#">report it on GitHub</a></span></p>
 """
-    write(f, inner_page(f, "Install", "Get DragonMounts 2 running in a Bedrock world, update from an older build, and fix the usual problems.",
-                        "Step-by-step install guide for the DragonMounts 2 Bedrock add-on, with update steps and troubleshooting.", secs, body))
+    write(f, inner_page(f, "Install", "Get Dragon Mounts 2 running in a Bedrock world, update from an older build, and fix the usual problems.",
+                        "Step-by-step install guide for the Dragon Mounts 2 Bedrock add-on, with update steps and troubleshooting.", secs, body))
 
 # ------------------------------------------------------------ DRAGONS
 def build_dragons():
@@ -797,12 +797,12 @@ def build_faq():
 <dl class="facts">{gl}</dl>
 """
     write(f, inner_page(f, "FAQ and glossary", "Quick answers about installing, raising, breeding and flying dragons.",
-                        "Frequently asked questions and a glossary for the DragonMounts 2 Bedrock add-on.", secs, body))
+                        "Frequently asked questions and a glossary for the Dragon Mounts 2 Bedrock add-on.", secs, body))
 
 # ------------------------------------------------------------ 404 + assets
 def build_404():
     f = "404.html"
-    write(f, head(f, "Page not found", "Page not found.") + header(f) + """<main id="main"><div class="wrap not-found">
+    write(f, head(f, "Page not found", "Page not found.", include_sprite=False) + header(f) + """<main id="main"><div class="wrap not-found">
 <h1>Page not found</h1>
 <p class="lede">This address does not match a page in the guide.</p>
 <p class="cta"><a class="btn" href="index.html">Home</a> <a class="btn ghost" href="dragons.html">Browse dragons</a></p>
@@ -823,6 +823,6 @@ def build_assets():
 if __name__ == "__main__":
     build_home(); build_java(); build_install(); build_dragons(); build_breeding(); build_flight()
     build_items(); build_changelog(); build_faq(); build_404()
-    idx("Home", "index.html", "", "Page", "DragonMounts 2 guide")
+    idx("Home", "index.html", "", "Page", "Dragon Mounts 2 guide")
     build_assets()
     print("Built", len(INDEX), "search entries")

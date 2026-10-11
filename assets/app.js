@@ -1,4 +1,4 @@
-/* DragonMounts 2 Wiki: shared behaviour. Plain JavaScript, no dependencies. */
+/* Dragon Mounts 2 Wiki: shared behaviour. Plain JavaScript, no dependencies. */
 (function () {
   "use strict";
   var root = document.documentElement;
@@ -6,13 +6,28 @@
   function $(s, c) { return (c || document).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (m) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]; }); }
+  function safeHref(value, allowExternal) {
+    if (typeof value !== "string" || !value.trim()) return "";
+    try {
+      var url = new URL(value, window.location.href);
+      if ((url.protocol !== "http:" && url.protocol !== "https:") ||
+          (!allowExternal && url.origin !== window.location.origin)) {
+        console.warn("Ignoring unsafe Wiki link:", value);
+        return "";
+      }
+      return value;
+    } catch (e) {
+      console.warn("Ignoring invalid Wiki link:", value);
+      return "";
+    }
+  }
   function setWikiSettings() {
     var theme = CFG.theme || {};
     var colors = {
       "--wiki-accent-light": theme.accentLight,
       "--wiki-accent-dark": theme.accentDark,
-      "--wiki-hero-light": theme.heroLight,
-      "--wiki-hero-dark": theme.heroDark
+      "--wiki-feature-light": theme.featureLight,
+      "--wiki-feature-dark": theme.featureDark
     };
     Object.keys(colors).forEach(function (name) {
       if (/^#[0-9a-f]{6}$/i.test(colors[name] || "")) {
@@ -35,11 +50,13 @@
         var list = document.createElement("ul");
         group.links.forEach(function (page) {
           if (!page || typeof page.label !== "string" || typeof page.href !== "string") return;
+          var href = safeHref(page.href, false);
+          if (!href) return;
           var item = document.createElement("li");
           var link = document.createElement("a");
           link.textContent = page.label;
-          link.href = page.href;
-          if (new URL(page.href, window.location.href).pathname === currentPath) {
+          link.href = href;
+          if (new URL(href, window.location.href).pathname === currentPath) {
             link.setAttribute("aria-current", "page");
           }
           item.appendChild(link);
@@ -60,7 +77,7 @@
   };
   /* ---------- config-driven links ---------- */
   $$("[data-link]").forEach(function (el) {
-    var url = CFG[el.getAttribute("data-link")];
+    var url = safeHref(CFG[el.getAttribute("data-link")], true);
     var a = el.tagName === "A" ? el : $("a", el);
     if (url && a) { a.href = url; el.hidden = false; } else { el.hidden = true; }
   });
@@ -231,7 +248,7 @@
   if (Array.isArray(CFG.navigation)) {
     CFG.navigation.forEach(function (group) {
       (group && Array.isArray(group.links) ? group.links : []).forEach(function (page) {
-        if (!page || typeof page.label !== "string" || typeof page.href !== "string") return;
+        if (!page || typeof page.label !== "string" || !safeHref(page.href, false)) return;
         if (!IDX.some(function (entry) { return entry.p === page.href && entry.k === "Page"; })) {
           IDX.push({ t: page.label, p: page.href, a: "", k: "Page", x: "Wiki guide" });
         }
@@ -255,6 +272,10 @@
     IDX.forEach(function (e) { var s = rank(e, terms); if (s) out.push([s, e]); });
     out.sort(function (a, b) { return b[0] - a[0]; });
     out = out.slice(0, 10);
+    out = out.filter(function (r) {
+      var e = r[1];
+      return !!safeHref(e.p + (e.a ? "#" + e.a : ""), false);
+    });
     sr.innerHTML = out.length ? out.map(function (r) {
       var e = r[1];
       return '<a href="' + esc(e.p + (e.a ? "#" + e.a : "")) + '">' + esc(e.t) + "<small>" + esc(e.k) + "</small></a>";
