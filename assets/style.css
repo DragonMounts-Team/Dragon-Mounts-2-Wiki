@@ -1,15 +1,15 @@
 /* Dragon Mounts 2 Wiki: shared styles. No external fonts or libraries. */
 :root{
-  --bg:#f4edf9;--panel:#fdfaff;--soft:#eadcf4;--fg:#291a35;--mute:#665173;--line:#d8c7e4;
-  --a:var(--wiki-accent-light,#7543a5);--on-a:#fff;--at:color-mix(in srgb,var(--a) 62%,var(--fg));
-  --feature-bg:var(--wiki-feature-light,#fff);
+  --bg:#edf1f4;--panel:#fff;--soft:#e7ebee;--fg:#1f2328;--mute:#5e6975;--line:#d3d9df;
+  --a:var(--wiki-accent-light,#5e6b75);--on-a:#fff;--at:color-mix(in srgb,var(--a) 62%,var(--fg));
+  --feature-bg:var(--wiki-feature-light,#f8fafc);
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --r:6px;--hh:64px;color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#211629;--panel:#2b1e35;--soft:#3b2948;--fg:#f5effa;--mute:#c6b5d2;--line:#51405f;--a:var(--wiki-accent-dark,#d2a2f5);--on-a:#251530;--feature-bg:var(--wiki-feature-dark,#30203e);color-scheme:dark}}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#1f2328;--panel:#2d3339;--soft:#383f46;--fg:#f1f5f9;--mute:#c6ced6;--line:#4d5862;--a:var(--wiki-accent-dark,#b7bec6);--on-a:#1a2128;--feature-bg:var(--wiki-feature-dark,#20262d);color-scheme:dark}}
 :root[data-theme="light"]{color-scheme:light}
-:root[data-theme="dark"]{--bg:#211629;--panel:#2b1e35;--soft:#3b2948;--fg:#f5effa;--mute:#c6b5d2;--line:#51405f;--a:var(--wiki-accent-dark,#d2a2f5);--on-a:#251530;--feature-bg:var(--wiki-feature-dark,#30203e);color-scheme:dark}
+:root[data-theme="dark"]{--bg:#1f2328;--panel:#2d3339;--soft:#383f46;--fg:#f1f5f9;--mute:#c6ced6;--line:#4d5862;--a:var(--wiki-accent-dark,#b7bec6);--on-a:#1a2128;--feature-bg:var(--wiki-feature-dark,#20262d);color-scheme:dark}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + env(safe-area-inset-top,0px) + 1.25rem);-webkit-text-size-adjust:100%}
@@ -320,7 +320,7 @@ ol.path span{color:var(--mute)}
 .edition-picker .lede{max-width:44rem;margin:.9rem auto 2rem;text-align:center}
 .edition-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:1rem}
 .edition-card{display:grid;align-content:start;gap:.7rem;min-height:13rem;padding:1.4rem;border:2px solid var(--line);border-radius:10px;background:var(--panel);color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s,box-shadow .15s}
-.edition-card:hover,.edition-card:focus-visible{border-color:var(--a);color:var(--fg);transform:translateY(-3px);box-shadow:0 .8rem 2rem #21152d18}
+.edition-card:hover,.edition-card:focus-visible{border-color:var(--a);color:var(--fg);transform:translateY(-3px);box-shadow:0 .8rem 2rem rgba(20,24,29,.16)}
 .edition-card strong{font:700 1.55rem var(--serif)}
 .edition-card span{color:var(--mute)}
 .edition-card .edition-tag{justify-self:start;padding:.25rem .55rem;border-radius:99px;background:var(--soft);color:var(--at);font-size:.78rem;font-weight:700}

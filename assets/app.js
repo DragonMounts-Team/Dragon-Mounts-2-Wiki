@@ -36,8 +36,9 @@
       "--wiki-feature-dark": theme.featureDark
     };
     Object.keys(colors).forEach(function (name) {
-      if (/^#[0-9a-f]{6}$/i.test(colors[name] || "")) {
-        root.style.setProperty(name, colors[name]);
+      var color = colors[name];
+      if (typeof color === "string" && /^#[0-9a-f]{6}$/i.test(color)) {
+        root.style.setProperty(name, color);
       }
     });
   }
@@ -104,7 +105,7 @@
     tbtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     tbtn.title = dark ? "Switch to light mode" : "Switch to dark mode";
     var themeColor = $("meta[name='theme-color']");
-    if (themeColor) themeColor.content = dark ? "#2b2d30" : "#f7f3fa";
+    if (themeColor) themeColor.content = dark ? "#1f2328" : "#edf1f4";
   }
   if (tbtn) {
     syncThemeControl();
@@ -227,8 +228,8 @@
     var id = decodeURIComponent((location.hash || "").slice(1)); if (!id) return;
     var t = document.getElementById(id); if (!t) return;
     var p = t;
-    while (p) { if (p.tagName === "DETAILS") p.open = true; p = p.parentElement; }
-    setTimeout(function () { t.scrollIntoView(); }, 30);
+    while (p) { if (p && p.tagName === "DETAILS") p.open = true; p = p && p.parentElement; }
+    setTimeout(function () { t.scrollIntoView({ block: "start", behavior: "smooth" }); }, 30);
   }
   addEventListener("hashchange", openHash); openHash();
 
