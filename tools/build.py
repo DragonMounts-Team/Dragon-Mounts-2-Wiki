@@ -298,6 +298,7 @@ def footer():
 <script src="assets/config.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/live.js"></script>
 </body>
 </html>
 """
@@ -398,6 +399,7 @@ def build_home():
 </div>
 </section>
 <div class="wrap home-note"><p class="note"><strong>Dragon Mounts 2 project guide.</strong> Mechanics and species are documented for the public v{VERSION} release. Check the <a href="{OFFICIAL_WIKI}">project development wiki</a> for technical notes and the <a href="{OFFICIAL_FILES}">official download listing</a> for current game-version support.</p></div>
+<section class="wrap news" id="news"><h2>Latest news</h2><div class="news-grid" id="news-grid"><a class="news-card big" href="changelog.html"><span class="news-tag">CHANGELOG</span><strong>Loading the latest releases…</strong><span class="news-sum">Pre-releases and updates from GitHub appear here automatically.</span></a></div><p><a class="btn ghost sm" href="changelog.html">All releases and changelogs</a></p></section>
 <div class="wrap home-content">
 {h2("tasks", "Browse the guide by goal", f, "Section")}
 {tasks_html}
@@ -627,7 +629,7 @@ def build_items():
 def build_changelog():
     f = "changelog.html"
     secs = [("coverage", "Wiki coverage"), ("releases", "Published release history"),
-            ("prereleases", "2.0 prereleases"), ("sources", "Official release pages")]
+            ("prereleases", "2.0 prereleases"), ("commits", "Development commits"), ("sources", "Official release pages")]
     stable_html, pre_html, search_rows = RELEASES.render(GITHUB_RELEASES)
     for row in search_rows:
         idx(row["t"], row["p"], row["a"], row["k"], row["x"])
@@ -649,6 +651,10 @@ def build_changelog():
 {h2("prereleases", "2.0 prereleases", f)}
 <p>These are prerelease notes, not a stable-release compatibility guarantee.</p>
 {RELEASES.wrap("prereleases", '<div class="release-list">' + pre_html + '</div>')}
+
+{h2("commits", "Latest development commits", f)}
+<p>The newest commits to the DragonMounts2-Bedrock repository, loaded live from GitHub.</p>
+<ul class="commit-feed" id="commit-feed"><li>Loading…</li></ul>
 
 {h2("sources", "Official release pages")}
 <ul>{''.join(f'<li><a href="{e(url)}">{e(name)}</a></li>' for name, url in DOWNLOAD_SOURCES)}<li><a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/releases">GitHub Releases</a></li><li><a href="{OFFICIAL_WIKI}">Project wiki</a></li></ul>

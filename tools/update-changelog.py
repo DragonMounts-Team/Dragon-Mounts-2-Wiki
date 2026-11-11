@@ -62,7 +62,17 @@ if newdata != data: changed.append("assets/data.js")
 before = R.load()
 if before != entries: changed.append("assets/releases.json")
 print(f"{len(entries)} releases ({len(fresh)} fetched). Changed: {', '.join(changed) or 'nothing'}")
-if args.dry_run or not changed: sys.exit(0)
-R.save(entries)
+if args.dry_run: sys.exit(0)
+if not changed: changed = ["commits"]
+if "assets/releases.json" in changed or True: R.save(entries)
+try:
+    req = urllib.request.Request(f"https://api.github.com/repos/{R.REPO}/commits?per_page=15", headers={"Accept": "application/vnd.github+json", "User-Agent": "dm2-wiki-changelog"})
+    if os.environ.get("GITHUB_TOKEN"): req.add_header("Authorization", "Bearer " + os.environ["GITHUB_TOKEN"])
+    cm = [{"sha": c["sha"][:7], "url": c["html_url"], "msg": c["commit"]["message"].split("\n")[0], "date": c["commit"]["author"]["date"][:10],
+           "who": (c.get("author") or {}).get("login") or c["commit"]["author"]["name"]} for c in json.load(urllib.request.urlopen(req, timeout=30))]
+    open(os.path.join(R.ROOT, "assets", "commits.json"), "w", encoding="utf8", newline="\n").write(json.dumps(cm, indent=2, ensure_ascii=False) + "\n")
+except Exception as ex: print(f"Commits not refreshed ({ex}).")
+
+
 open(path, "w", encoding="utf8", newline="").write(new)
 open(dpath, "w", encoding="utf8", newline="").write(newdata)
