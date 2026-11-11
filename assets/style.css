@@ -318,3 +318,9 @@ table{max-width:100%}
 .layout article{overflow-wrap:anywhere}
 .layout article pre,.layout article .table-wrap{overflow-x:auto}
 @media(max-width:700px){.layout article table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+
+/* ===== v6: accessibility + print ===== */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.site,.foot,.guide-sidebar,.toc,.pager,.page-meta,.edition-status,.skip,#sx,.nav-drawer{display:none!important}
+ .phead{background:none!important;color:#000;border:0;padding:0}.phead h1,.phead .lede,.crumbs,.crumbs a,.crumbs b{color:#000!important}
+ .layout.has-sidebar{display:block}body{background:#fff;color:#000;font-size:11pt}a{color:#000}details:not([open])>*:not(summary){display:block}}

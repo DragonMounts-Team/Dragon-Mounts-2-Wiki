@@ -103,7 +103,7 @@ for (const [file, contents] of pages) {
   }
 }
 
-for (const file of ["assets/app.js", "assets/config.js", "assets/data.js"]) {
+for (const file of ["assets/app.js", "assets/live.js", "assets/wiki.js", "assets/config.js", "assets/data.js"]) {
   const absolutePath = path.join(root, file);
   const contents = fs.readFileSync(absolutePath, "utf8");
   if (adCode.test(contents)) fail(`${file}: third-party advertising code is not allowed`);
