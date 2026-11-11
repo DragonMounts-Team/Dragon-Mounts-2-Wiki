@@ -282,30 +282,39 @@ h2::after{display:none}
 .task-group>h3{margin:1.8rem 0 .6rem;font-size:1.15rem;color:var(--mute)}
 .tasks a,.edition-card{border:0;border-bottom:4px solid transparent;box-shadow:0 1px 3px rgba(0,0,0,.18);transition:box-shadow .15s,border-color .15s}
 .tasks a:hover,.edition-card:hover,.edition-card:focus-visible{transform:none;box-shadow:0 6px 16px rgba(0,0,0,.28)}
-.tasks a{position:relative;padding:1.1rem 1.2rem 1.1rem 4.2rem}
-.tasks a::before{content:"";background:none;position:absolute;left:1.1rem;top:1.15rem;width:2.1rem;height:2.1rem;background:var(--g2);
-  -webkit-mask:var(--ic,none) center/1.4rem no-repeat;mask:var(--ic,none) center/1.4rem no-repeat;background:var(--g2);box-shadow:none}
-.tasks a:hover::before{background:var(--g1)}
+.tasks a{padding:1.1rem 1.3rem}
 .release-entry{box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .commit-feed li{border:0;border-left:4px solid var(--g1);box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.tasks a{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><rect x=%273%27 y=%273%27 width=%277%27 height=%277%27/><rect x=%2714%27 y=%273%27 width=%277%27 height=%277%27/><rect x=%273%27 y=%2714%27 width=%277%27 height=%277%27/><rect x=%2714%27 y=%2714%27 width=%277%27 height=%277%27/></svg>")}
-.tasks a[href="install.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M14.5 6a4 4 0 0 0 4.9 5L21 12.600 12.600 21a2.100 2.100 0 0 1-3-3L18 9.500%27/><path d=%27M9.500 4.500L7 7 4 6 3 9l3 1 2.500 2.500%27/></svg>")}
-.tasks a[href*="#downloads"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3v12m0 0l-4-4m4 4l4-4M4 20h16%27/></svg>")}
-.tasks a[href="dragons.html#species"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z%27/><path d=%27M7.500 14c3 1.500 6 1.500 9 0%27/></svg>")}
-.tasks a[href*="#hatching"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z%27/><path d=%27M7.500 14c3 1.500 6 1.500 9 0%27/></svg>")}
-.tasks a[href*="#taming"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.500A4 4 0 0 1 19 10c0 5.500-7 10-7 10z%27/></svg>")}
-.tasks a[href*="#controls"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M2 19C3 10 9 5 22 4c-1 4-3 6-6 7 2 0 3 0 5 0-2 4-6 6-10 6 1 0 2 0 3-1-4 0-8 1-12 3z%27/></svg>")}
-.tasks a[href*="#transformations"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M4 8h13l-3-3M20 16H7l3 3%27/></svg>")}
-.tasks a[href*="items.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><rect x=%273%27 y=%277%27 width=%2718%27 height=%2713%27/><path d=%27M3 12h18M10 12v3h4v-3M5 7V5h14v2%27/></svg>")}
-.tasks a[href*="faq.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><circle cx=%2712%27 cy=%2712%27 r=%279%27/><path d=%27M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.7.400-1 .9-1 1.700M12 17v.01%27/></svg>")}
-.tasks a[href*="curseforge"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M6 3h9l4 4v14H6z%27/><path d=%27M14 3v5h5M9 13h7M9 17h7%27/></svg>")}
-.tasks a[href$="install.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M14.5 6a4 4 0 0 0 4.9 5L21 12.600 12.600 21a2.100 2.100 0 0 1-3-3L18 9.500%27/><path d=%27M9.500 4.500L7 7 4 6 3 9l3 1 2.500 2.500%27/></svg>")}
-.tasks a[href="dragons.html#species"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z%27/><path d=%27M7.500 14c3 1.500 6 1.500 9 0%27/></svg>")}
 
-.tasks a::before{background:var(--g2)!important}
-.tasks a{--tint:rgba(82,165,53,.14)}
-.tasks a::after{content:"";position:absolute;left:1.1rem;top:1.15rem;width:2.1rem;height:2.1rem;background:var(--tint);z-index:-1}
-.tasks a{isolation:isolate}
 .feature-actions .btn:nth-child(3){display:none}
 .edition-status{display:flex;justify-content:space-between;align-items:center;max-width:76rem;margin:0 auto;padding:.5rem max(1.25rem,env(safe-area-inset-left,0px));background:none;color:var(--mute);font-size:.9rem}
 .edition-status span{color:var(--mute)}.edition-status button{min-height:32px;padding:.1rem .9rem;font-size:.85rem}
+
+/* ===== v4: wiki layout ===== */
+.phead{padding:1.6rem 0 1.8rem}.phead h1{font-size:clamp(1.8rem,4vw,2.6rem)}.phead .lede{font-size:1.05rem;margin-top:.5rem}
+.crumbs{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:.7rem;font-size:.85rem;color:#b1b2b5}
+.crumbs a{color:#b1b2b5;text-decoration:none}.crumbs a:hover{color:#fff;text-decoration:underline}
+.crumbs span::before,.crumbs b::before{content:"›";margin-right:.4rem;color:#6c6c6f}.crumbs b{font-weight:400;color:#fff}
+.layout{padding-block:2rem 2.5rem}.layout.has-sidebar{gap:2.5rem}
+.layout.has-sidebar.has-toc{grid-template-columns:minmax(11rem,14rem) minmax(0,1fr) minmax(10rem,13rem)}
+.toc{position:sticky;top:calc(var(--hh) + 1.25rem);max-height:calc(100vh - var(--hh) - 2.5rem);overflow-y:auto;font-size:.88rem;border-left:2px solid var(--line);padding-left:1rem}
+.toc .guide-group h2{font-size:.8rem;margin:0 0 .6rem;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;padding:0}
+.toc ul{list-style:none;padding:0;margin:0}.toc li{margin:0}
+.toc a{display:block;padding:.28rem 0;color:var(--mute);text-decoration:none}.toc a:hover{color:var(--fg)}
+.toc a[aria-current]{color:var(--at);font-weight:600}
+.guide-sidebar .guide-group h2{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:1180px){.layout.has-sidebar.has-toc{grid-template-columns:minmax(11rem,14rem) minmax(0,1fr)}.toc{display:none}}
+@media(max-width:900px){.layout.has-sidebar.has-toc{grid-template-columns:minmax(0,1fr)}}
+.page-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:3rem 0 1rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--mute)}
+.page-meta a{color:var(--mute)}.page-meta a:hover{color:var(--fg)}.page-meta span:empty{display:none}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0 0}
+.pager a{display:grid;gap:.1rem;padding:.9rem 1.1rem;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.18);border-bottom:4px solid transparent;text-decoration:none;color:var(--fg)}
+.pager a:hover{border-bottom-color:var(--g1)}.pager .next{text-align:right;grid-column:2}.pager small{color:var(--mute);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}.pager b{font:400 1.05rem var(--mc)}
+
+/* ===== v5: responsive fixes ===== */
+@media(max-width:520px){.bar{gap:.4rem}.tools{gap:.3rem}.tn-cta{display:none}.sbtn,.ibtn{min-width:40px;padding:.3rem .55rem}.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+img,video,iframe,svg{max-width:100%}
+table{max-width:100%}
+.layout article{overflow-wrap:anywhere}
+.layout article pre,.layout article .table-wrap{overflow-x:auto}
+@media(max-width:700px){.layout article table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}

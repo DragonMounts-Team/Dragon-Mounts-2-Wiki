@@ -298,6 +298,7 @@ def footer():
 <script src="assets/config.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/wiki.js"></script>
 <script src="assets/live.js"></script>
 </body>
 </html>
