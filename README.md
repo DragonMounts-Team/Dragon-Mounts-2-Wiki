@@ -1,6 +1,6 @@
 # Dragon Mounts 2 Wiki
 
-The Dragon Mounts 2 project wiki starts by asking whether you play Minecraft Bedrock or Java. Bedrock has the current guides for the public v1.2.5.1 release; Java has a separate starter section ready for future guides.
+The Dragon Mounts 2 project wiki documents the public Minecraft Bedrock v1.2.5.1 release.
 
 - [Official CurseForge files](https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-2/files/all)
 - [Official project wiki](https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki)
@@ -16,4 +16,4 @@ The Dragon Mounts 2 project wiki starts by asking whether you play Minecraft Bed
 
 ## Look and feel
 
-The UI uses Minecraft GUI textures from `assets/mc/` and the pixel font in `assets/fonts/`. The local editor (`Start-Wiki-Editor.bat`) shares the same style and has a **Site files** workspace for editing any file, uploading images and running the changelog update.
+The site uses a flat, minecraft.net-style UI with the pixel font in `assets/fonts/`; the only game textures on the site are the dragon, egg and nest images in `textures/`. (`assets/mc/` is used only by the local editor tool.) The local editor (`Start-Wiki-Editor.bat`) shares the same style and has a **Site files** workspace for editing any file, uploading images and running the changelog update.

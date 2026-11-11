@@ -14,7 +14,7 @@ window.DM_CONFIG = {
           "href": "index.html"
         },
         {
-          "label": "Install",
+          "label": "Install and FAQ",
           "href": "install.html"
         }
       ]
@@ -23,16 +23,12 @@ window.DM_CONFIG = {
       "title": "Dragon guide",
       "links": [
         {
-          "label": "Dragons",
+          "label": "Dragons and nests",
           "href": "dragons.html"
         },
         {
-          "label": "Eggs and taming",
-          "href": "breeding.html"
-        },
-        {
-          "label": "Riding and flight",
-          "href": "flight.html"
+          "label": "Eggs, taming and flight",
+          "href": "gameplay.html"
         }
       ]
     },
@@ -46,10 +42,6 @@ window.DM_CONFIG = {
         {
           "label": "Changelog",
           "href": "changelog.html"
-        },
-        {
-          "label": "FAQ and glossary",
-          "href": "faq.html"
         }
       ]
     }

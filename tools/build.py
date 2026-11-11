@@ -142,63 +142,19 @@ SPRITE = """<svg class="svg-sprite" width="0" height="0" aria-hidden="true"><def
 MARK = '<img class="mark" src="textures/pack_icon.png" alt="">'
 
 PAGES = [  # file, nav label, title
-    ("install.html", "Install", "Install"),
-    ("dragons.html", "Dragons", "Dragons"),
-    ("breeding.html", "Breeding", "Breeding"),
-    ("flight.html", "Flight", "Riding and flight"),
+    ("install.html", "Install & FAQ", "Install and FAQ"),
+    ("dragons.html", "Dragons", "Dragons and nests"),
+    ("gameplay.html", "Gameplay", "Eggs, taming and flight"),
     ("items.html", "Items", "Items"),
     ("changelog.html", "Changelog", "Changelog"),
-    ("faq.html", "FAQ", "FAQ and glossary"),
 ]
 
 GUIDE_GROUPS = [
-    ("Start here", [("index.html", "Overview"), ("install.html", "Install")]),
-    ("Dragon guide", [("dragons.html", "Dragons"), ("breeding.html", "Eggs and taming"),
-                      ("flight.html", "Riding and flight")]),
-    ("Reference", [("items.html", "Items and equipment"), ("changelog.html", "Changelog"),
-                   ("faq.html", "FAQ and glossary")]),
+    ("Start here", [("index.html", "Overview"), ("install.html", "Install and FAQ")]),
+    ("Dragon guide", [("dragons.html", "Dragons and nests"), ("gameplay.html", "Eggs, taming and flight")]),
+    ("Reference", [("items.html", "Items and equipment"), ("changelog.html", "Changelog")]),
 ]
 
-EDITION_SCRIPT = """<script>
-(() => {
-  const key = "dm2-edition";
-  const picker = document.querySelector("#edition-picker");
-  const bedrock = document.querySelector("#bedrock-content");
-  const params = new URLSearchParams(window.location.search);
-  let saved = null;
-  try { saved = localStorage.getItem(key); } catch (error) {}
-  const showBedrock = (remember) => {
-    picker.hidden = true;
-    bedrock.hidden = false;
-    if (remember) { try { localStorage.setItem(key, "bedrock"); } catch (error) {} }
-  };
-  if (params.get("choose") === "1") {
-    try { localStorage.removeItem(key); } catch (error) {}
-  } else if (params.get("edition") === "bedrock" || window.location.hash) {
-    showBedrock(true);
-  } else if (saved === "java") {
-    window.location.replace("java.html");
-  } else if (saved === "bedrock") {
-    showBedrock(false);
-  }
-  document.querySelector("#select-bedrock").addEventListener("click", () => showBedrock(true));
-  document.querySelector("#select-java").addEventListener("click", () => {
-    try { localStorage.setItem(key, "java"); } catch (error) {}
-  });
-  document.querySelector("#change-edition").addEventListener("click", () => {
-    try { localStorage.removeItem(key); } catch (error) {}
-    bedrock.hidden = true;
-    picker.hidden = false;
-    window.history.replaceState(null, "", window.location.pathname);
-    picker.scrollIntoView({ block: "start" });
-  });
-  if (window.location.hash && !bedrock.hidden) {
-    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
-    if (target) requestAnimationFrame(() => target.scrollIntoView());
-  }
-})();
-</script>
-"""
 
 INDEX = []  # search index entries
 
@@ -241,7 +197,7 @@ def head(file, title, desc, include_sprite=True):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(full_title)}</title>
 <meta name="description" content="{e(desc)}">
-<meta name="theme-color" content="#21152d">
+<meta name="theme-color" content="#1e1e1f">
 <link rel="icon" href="textures/pack_icon.png" type="image/png">
 {canon}{og}
 <script>try{{var t=localStorage.getItem("dm2-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}}catch(x){{}}</script>
@@ -304,7 +260,10 @@ def footer():
 </html>
 """
 
+PARTS = {}
+
 def inner_page(file, title, lede, desc, sections, body_html, extra_layout_class=""):
+    PARTS[file] = (list(sections), body_html)
     """sections: list of (id, label) for page contents navigation."""
     idx(title, file, "", "Page", lede)
     return (head(file, title, desc) + header(file, sections) + f"""<main id="main">
@@ -332,7 +291,11 @@ def youtube_embed(video_id, title):
         'target="_blank" rel="noopener noreferrer">Watch on YouTube</a></figcaption></figure>'
     )
 
+REMAP = {"breeding.html": "gameplay.html", "flight.html": "gameplay.html", "faq.html": "install.html", "nests.html": "dragons.html#nests"}
+
 def write(path, content):
+    if path.endswith(".html"):
+        for old, new in REMAP.items(): content = content.replace(old, new)
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
@@ -365,28 +328,8 @@ def build_home():
                 for label, description, url in tasks) +
         '</div></section>'
         for title, tasks in task_groups)
-    body = head(f, "", f"Dragon Mounts 2 Wiki for Minecraft Bedrock and Java editions.") + header(f, [("tasks", "Browse the guide"), ("meet", "Meet the dragons"), ("help", "Contribute")]) + f"""<main id="main">
-<section class="edition-picker" id="edition-picker" aria-labelledby="edition-title">
-<div class="wrap edition-picker-inner">
-<p class="eyebrow">DRAGON MOUNTS 2 WIKI</p>
-<h1 id="edition-title">Which Minecraft edition do you play?</h1>
-<p class="lede">Choose your edition to open the right guide. We’ll remember your choice on this device, and you can change it whenever you like.</p>
-<div class="edition-options">
-<button class="edition-card" id="select-bedrock" type="button">
-<span class="edition-tag">GUIDES AVAILABLE</span>
-<strong>Minecraft Bedrock</strong>
-<span>Open the Bedrock guides for installing the add-on, dragons, eggs, flight, and more.</span>
-</button>
-<a class="edition-card" id="select-java" href="java.html">
-<span class="edition-tag">STARTER SECTION</span>
-<strong>Minecraft Java</strong>
-<span>Open the Java section. It is a blank area ready for Java-specific guides.</span>
-</a>
-</div>
-</div>
-</section>
-<div id="bedrock-content" hidden>
-<div class="edition-status"><span>Showing Minecraft Bedrock guides</span><button id="change-edition" type="button">Change edition</button></div>
+    body = head(f, "", f"Dragon Mounts 2 Wiki for Minecraft Bedrock.") + header(f, [("tasks", "Browse the guide"), ("meet", "Meet the dragons"), ("help", "Contribute")]) + f"""<main id="main">
+<div id="bedrock-content">
 <section class="home-feature">
 <div class="wrap home-feature-inner">
 <div class="home-feature-copy">
@@ -417,29 +360,52 @@ def build_home():
 </div>
 </div>
 </main>
-""" + EDITION_SCRIPT + footer()
+""" + footer()
     write(f, body)
 
-def build_java():
-    f = "java.html"
-    body = head(f, "Minecraft Java", "The Java edition section of the Dragon Mounts 2 Wiki, ready for future Java-specific guides.", include_sprite=False) + """<header class="site">
-  <div class="wrap bar">
-    <a class="brand" href="index.html?choose=1"><img class="mark" src="textures/pack_icon.png" alt=""><span>Dragon Mounts 2 Wiki</span></a>
-    <a class="btn sm" href="index.html?choose=1">Change edition</a>
-  </div>
-</header>
-<main id="main">
-  <div class="phead"><div class="wrap"><p class="eyebrow">MINECRAFT JAVA</p><h1>Java Edition guides</h1><p class="lede">This is the Java section of the Wiki. It is a starter area ready for Java-specific guides.</p></div></div>
-  <section class="wrap java-empty" aria-labelledby="java-empty-title">
-    <h2 id="java-empty-title">This section is ready for future guides</h2>
-    <p>There are no Java guides here yet. The existing Dragon Mounts 2 guides are for Minecraft Bedrock; this section is kept separate for Java information.</p>
-    <p class="cta"><a class="btn" href="index.html?edition=bedrock">Open the Bedrock guides</a><a class="btn ghost" href="index.html?choose=1">Choose another edition</a></p>
-  </section>
-</main>
-<footer class="foot"><div class="wrap"><p>Dragon Mounts 2 Wiki · <a href="index.html?choose=1">Choose edition</a> · <a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/wiki">Project wiki</a></p></div></footer>
-<script>try { localStorage.setItem("dm2-edition", "java"); } catch (error) {}</script>
-</body></html>"""
-    write(f, body)
+
+# ------------------------------------------------------------ NESTS
+NESTS = [  # dragon, egg slug, dimension, biomes, nest image (optional)
+    ("Aether Dragon", "aether", "Overworld", "Most biomes except Mesa", None),
+    ("Fire Dragon", "fire", "Overworld", "Desert, plains, dripstone caves and plateaus", None),
+    ("Forest Dragon", "forest", "Overworld", "Forests, jungles and flower forests", "textures/dragon.nest/forest_nest.png"),
+    ("Ice Dragon", "ice", "Overworld", "Frozen biomes", None),
+    ("Moonlight Dragon", "moonlight", "Overworld", "Cold and deep oceans, and rivers", "textures/dragon.nest/moonlight.png"),
+    ("Sculk Dragon", "sculk", "Overworld", "Underground in the Deep Dark", None),
+    ("Sunlight Dragon", "sunlight", "Overworld", "Desert and desert hills", None),
+    ("Terra Dragon", "terra", "Overworld", "Mesa / Badlands", None),
+    ("Water Dragon", "water", "Overworld", "Oceans and swamps", None),
+    ("Nether Dragon", "nether", "Nether", "All Nether biomes", None),
+    ("Skeleton Dragon", "skeleton", "Nether", "All Nether biomes", None),
+    ("Zombie Dragon", "zombie", "Nether", "All Nether biomes", None),
+]
+
+def build_nests():
+    f = "nests.html"
+    secs = [("nests", "Finding nests"), ("nest-locations", "Nest locations")]
+    cards = "".join(
+        f'<li class="nest" data-dim="{e(dim)}" data-text="{e((name + " " + biome + " " + dim).lower())}">'
+        f'<div class="nest-art"><img src="{img or f"textures/dragon.egg/dragonmounts2.dragon_egg_{slug}.png"}" alt="{e(name)} {"nest" if img else "egg"}" width="64" height="64" loading="lazy"></div>'
+        f'<div><b>{e(name)}</b><span class="nest-dim">{e(dim)}</span><p>{e(biome)}</p></div></li>'
+        for name, slug, dim, biome, img in NESTS)
+    for name, slug, dim, biome, img in NESTS:
+        idx(name + " nest", f, "nest-locations", "Nest", f"{dim}: {biome}")
+    body = f"""
+{h2("nests", "Finding nests", f)}
+<p>Natural nests generate in the world and hold a dragon egg. Each species spawns its nests in specific biomes, listed below. Nests for the Ender, Enchant, Dark, Storm and Wither dragons do not generate; those eggs come from conversion or transformation (see <a href="breeding.html#transformations">Eggs and taming</a>).</p>
+
+{h2("nest-locations", "Nest locations", f)}
+<div class="nest-tools"><input id="nest-q" type="search" placeholder="Search by dragon or biome" aria-label="Search nests"><div class="chipset" role="group" aria-label="Filter by dimension"><button type="button" data-dim="" aria-pressed="true">All</button><button type="button" data-dim="Overworld" aria-pressed="false">Overworld</button><button type="button" data-dim="Nether" aria-pressed="false">Nether</button></div></div>
+<ul class="nest-grid" id="nest-grid">{cards}</ul>
+<p class="mute" id="nest-empty" hidden>No nests match your search.</p>
+<script>
+(function(){{var q=document.getElementById("nest-q"),g=document.getElementById("nest-grid"),b=document.querySelectorAll(".nest-tools [data-dim]"),dim="";
+function run(){{var t=q.value.trim().toLowerCase(),n=0;Array.prototype.forEach.call(g.children,function(li){{var ok=(!dim||li.dataset.dim===dim)&&(!t||li.dataset.text.indexOf(t)>-1);li.hidden=!ok;if(ok)n++}});document.getElementById("nest-empty").hidden=n>0}}
+q.addEventListener("input",run);Array.prototype.forEach.call(b,function(x){{x.addEventListener("click",function(){{dim=x.dataset.dim;Array.prototype.forEach.call(b,function(y){{y.setAttribute("aria-pressed",y===x)}});run()}})}})}})();
+</script>
+"""
+    write(f, inner_page(f, "Dragon nests", "Where natural dragon nests generate, by biome and dimension.",
+                        "Find where every Dragon Mounts 2 natural nest generates, searchable by dragon and biome.", secs, body))
 
 # ------------------------------------------------------------ INSTALL
 def build_install():
@@ -606,7 +572,7 @@ def build_items():
         i = slug(name)
         idx(name, f, i, "Item", group)
         cards += (f'<li class="item" id="{i}" data-group="{group}">'
-                  f'<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#{icon}"/></svg><div><b>{name}</b><p>{note}</p></div></li>')
+                  f'<div><b>{name}</b><p>{note}</p></div></li>')
     groups = ["Equipment", "Armor", "Materials", "Eggs and blocks", "Food"]
     gbtn = '<button type="button" data-group="all" aria-pressed="true">All</button>' + "".join(
         f'<button type="button" data-group="{g}" aria-pressed="false">{g}</button>' for g in groups)
@@ -691,6 +657,25 @@ def build_faq():
                         "Frequently asked questions and a glossary for the Dragon Mounts 2 Bedrock add-on.", secs, body))
 
 # ------------------------------------------------------------ 404 + assets
+
+# ------------------------------------------------------------ MERGED PAGES
+def build_merged():
+    import os as _os
+    def combo(file, title, lede, desc, parts):
+        secs, body = [], []
+        for p in parts:
+            secs += PARTS[p][0]; body.append(PARTS[p][1])
+        write(file, inner_page(file, title, lede, desc, secs, "\n".join(body)))
+    combo("dragons.html", "Dragons and nests", f"Browse all 17 dragons in the public v{VERSION} release, see where natural nests generate, and compare eggs, breath types and transformations.",
+          "Dragon appearances, the full 17-species roster, and a searchable list of natural nest locations for Dragon Mounts 2.", ["dragons.html", "nests.html"])
+    combo("gameplay.html", "Eggs, taming and flight", f"How to hatch, tame, transform and ride dragons in public release v{VERSION}.",
+          "Egg hatching, taming and breeding, egg transformations, riding, flight and dragon inventory for Dragon Mounts 2.", ["breeding.html", "flight.html"])
+    combo("install.html", "Install and FAQ", "Get Dragon Mounts 2 running in a Bedrock world, fix the usual problems, and find quick answers.",
+          "Install guide, troubleshooting, frequently asked questions and glossary for the Dragon Mounts 2 Bedrock add-on.", ["install.html", "faq.html"])
+    for old in ("nests.html", "breeding.html", "flight.html", "faq.html"):
+        p = _os.path.join(ROOT, old)
+        if _os.path.exists(p): _os.remove(p)
+
 def build_404():
     f = "404.html"
     write(f, head(f, "Page not found", "Page not found.", include_sprite=False) + header(f) + """<main id="main"><div class="wrap not-found">
@@ -700,20 +685,21 @@ def build_404():
 </div></main>""" + footer())
 
 def build_assets():
+    for e_ in INDEX: e_["p"] = {"breeding.html": "gameplay.html", "flight.html": "gameplay.html", "faq.html": "install.html", "nests.html": "dragons.html"}.get(e_["p"], e_["p"])
     js = "window.DM_INDEX=" + json.dumps(INDEX, ensure_ascii=False) + ";\n"
     write("assets/data.js", js)
     write("assets/favicon.svg", """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"><rect width="160" height="120" rx="26" fill="#f97316"/><g fill="#1d1008" transform="translate(16 12) scale(.8)"><path d="M58 40C44 28 28 22 10 24c14 6 26 16 34 30z"/><path d="M80 38C70 22 56 12 40 8c12 10 20 24 24 38z"/><path d="M28 90C20 66 34 44 62 40c22-4 50 4 78 22 10 6 8 16-2 18l-26 2c-6 12-22 16-36 12-14 8-30 4-48-4z"/><path d="M30 92l-14 14 22-6zM46 98l-6 16 18-12z"/><path d="M86 52c10-8 26-4 36 6-12 2-26 0-36-6z" fill="#f97316"/></g></svg>""")
     write(".nojekyll", "")
     write("robots.txt", "User-agent: *\nAllow: /\n" + (f"Sitemap: {SITE_URL}/sitemap.xml\n" if SITE_URL else ""))
     if SITE_URL:
-        urls = ["index.html", "java.html"] + [p[0] for p in PAGES]
+        urls = ["index.html"] + [p[0] for p in PAGES]
         sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
             f'<url><loc>{SITE_URL}/{"" if u == "index.html" else u}</loc></url>\n' for u in urls) + "</urlset>\n"
         write("sitemap.xml", sm)
 
 if __name__ == "__main__":
-    build_home(); build_java(); build_install(); build_dragons(); build_breeding(); build_flight()
-    build_items(); build_changelog(); build_faq(); build_404()
+    build_home(); build_install(); build_dragons(); build_nests(); build_breeding(); build_flight()
+    build_items(); build_changelog(); build_faq(); build_merged(); build_404()
     idx("Home", "index.html", "", "Page", "Dragon Mounts 2 guide")
     build_assets()
     print("Built", len(INDEX), "search entries")

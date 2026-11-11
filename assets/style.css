@@ -98,9 +98,9 @@ mark{background:#ffe85a;color:#000;padding:0 2px}.mute,.nd{color:var(--mute)}
 @media(max-width:900px){.layout.has-sidebar{grid-template-columns:minmax(0,1fr)}.guide-sidebar{display:none}}
 
 /* ===== page hero (dark band, grass divider) ===== */
-.phead,.home-feature,.edition-picker{position:relative;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.35)),var(--hero) url(mc/deepslate.png) 0 0/64px 64px;color:#fff}
+.phead,.home-feature,.edition-picker{position:relative;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.35)),var(--hero) ;color:#fff}
 .phead{padding:3.4rem 0 3.6rem}
-.phead::after,.home-feature::after,.foot::before{content:"";position:absolute;left:0;right:0;bottom:0;height:32px;background:url(mc/grass_block_side.png) 0 0/64px 64px repeat-x;transform:translateY(100%);image-rendering:pixelated;pointer-events:none;z-index:1}
+.phead::after,.home-feature::after,.foot::before{content:"";position:absolute;left:0;right:0;bottom:0;height:32px;transform:translateY(100%);image-rendering:pixelated;pointer-events:none;z-index:1}
 .phead h1,.home-feature h1,.edition-picker h1{color:#fff;text-shadow:4px 4px 0 rgba(0,0,0,.5)}
 .phead h1{font-size:clamp(2.1rem,5vw,3.4rem)}
 .lede{margin:.9rem 0 0;max-width:46rem;color:#e4e4e6;font-size:1.2rem}
@@ -182,8 +182,8 @@ ol.path li{counter-increment:p;display:grid;grid-template-columns:3.4rem 1fr;gap
 ol.path li::before{content:counter(p);grid-row:span 2;display:grid;place-items:center;width:2.7rem;height:2.7rem;background:var(--g2);color:#fff;font:400 1.2rem var(--mc);box-shadow:inset 0 3px 0 var(--g1),inset 0 -4px 0 var(--g3)}
 ol.path b{font:400 1.1rem var(--mc)}ol.path span{color:var(--mute)}
 .steps{list-style:none;padding:0}.steps li{margin:.6rem 0}.steps label{display:flex;gap:.8rem;align-items:flex-start;cursor:pointer}
-.steps input,.editor-checklist input{appearance:none;flex:none;width:24px;height:24px;min-height:0;padding:0;margin:2px 0 0;border:0;box-shadow:none;background:url(mc/checkbox.png) center/100% 100%;image-rendering:pixelated;cursor:pointer}
-.steps input:checked,.editor-checklist input:checked{background-image:url(mc/checkbox_selected.png)}
+.steps input,.editor-checklist input{appearance:none;flex:none;width:24px;height:24px;min-height:0;padding:0;margin:2px 0 0;border:0;box-shadow:none;background:var(--field);border:2px solid var(--line2);image-rendering:pixelated;cursor:pointer}
+.steps input:checked,.editor-checklist input:checked{background:var(--g2) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27white%27 stroke-width=%273%27%3E%3Cpath d=%27M5 12l5 5 9-10%27/%3E%3C/svg%3E") center/80% no-repeat;border-color:var(--g3)}
 .steps input:checked+span,.editor-checklist input:checked+span{color:var(--mute);text-decoration:line-through}
 .steps small{display:block;color:var(--mute)}
 .prog{height:20px;background:#1e1e1f;border:2px solid #000;padding:2px;overflow:hidden}
@@ -324,3 +324,15 @@ table{max-width:100%}
 @media print{.site,.foot,.guide-sidebar,.toc,.pager,.page-meta,.edition-status,.skip,#sx,.nav-drawer{display:none!important}
  .phead{background:none!important;color:#000;border:0;padding:0}.phead h1,.phead .lede,.crumbs,.crumbs a,.crumbs b{color:#000!important}
  .layout.has-sidebar{display:block}body{background:#fff;color:#000;font-size:11pt}a{color:#000}details:not([open])>*:not(summary){display:block}}
+
+/* ===== nests ===== */
+.nest-tools{display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:center;margin:1rem 0}
+.nest-tools input{flex:1 1 16rem;min-height:44px;padding:.4rem .9rem;font:inherit;color:var(--fg);background:var(--field);border:2px solid var(--line2);border-radius:0}
+.nest-tools input:focus{border-color:var(--g1);outline:none}
+.nest-grid{list-style:none;margin:1rem 0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr))}
+.nest{display:flex;gap:1rem;align-items:center;padding:1rem 1.1rem;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.18);border-bottom:4px solid transparent;margin:0}
+.nest:hover{border-bottom-color:var(--g1)}.nest[hidden]{display:none}
+.nest-art{flex:none;width:72px;height:72px;display:grid;place-items:center;background:var(--alt)}.nest-art img{width:64px;height:64px;object-fit:contain}
+.nest b{display:block;font:400 1.05rem var(--mc)}.nest p{margin:.2rem 0 0;color:var(--mute);font-size:.9rem}
+.nest-dim{display:inline-block;margin-top:.2rem;padding:0 .5rem;font:400 .72rem var(--mc);color:#fff;background:var(--g2)}
+.nest[data-dim="Nether"] .nest-dim{background:#a93226}

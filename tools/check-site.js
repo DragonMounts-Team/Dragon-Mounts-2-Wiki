@@ -5,10 +5,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const errors = [];
 const adCode = /\b(?:adsbygoogle|googlesyndication|googleadservices|doubleclick\.net|adservice\.google|amazon-adsystem\.com|taboola\.com|outbrain\.com)\b/i;
-const trackedHtml = execFileSync("git", ["ls-files", "--", "*.html"], {
-  cwd: root,
-  encoding: "utf8"
-}).trim().split(/\r?\n/).filter(Boolean);
+const trackedHtml = fs.readdirSync(root).filter((name) => name.endsWith(".html") && !["PAGE-TEMPLATE.html", "wiki-editor.html"].includes(name));
 const pages = new Map();
 
 function fail(message) {
@@ -43,25 +40,25 @@ if (!pages.has("index.html")) fail("GitHub Pages root is missing index.html");
 else {
   const home = pages.get("index.html");
   if (!/<title>Dragon Mounts 2 Wiki<\/title>/.test(home)) {
-    fail("index.html must be the edition-selection homepage");
+    fail("index.html must be the Wiki homepage");
   }
   if (/DragonMounts 2/.test(home)) {
     fail('index.html uses the joined product name; spell it "Dragon Mounts 2"');
   }
-  for (const id of ["edition-picker", "select-bedrock", "select-java", "bedrock-content"]) {
+  for (const id of ["bedrock-content"]) {
     if (!home.includes(`id="${id}"`)) fail(`index.html is missing the edition control "${id}"`);
   }
 }
-if (!pages.has("breeding.html")) fail("The Wiki is missing the eggs-and-taming guide");
+if (!pages.has("gameplay.html")) fail("The Wiki is missing the eggs-and-taming guide");
 else {
-  const eggGuide = pages.get("breeding.html");
+  const eggGuide = pages.get("gameplay.html");
   for (const videoId of ["vdNj07vRxf4", "GulxOXMwWVU"]) {
     if (!eggGuide.includes(`youtube-nocookie.com/embed/${videoId}`)) {
-      fail(`breeding.html is missing the preserved YouTube video "${videoId}"`);
+      fail(`gameplay.html is missing the preserved YouTube video "${videoId}"`);
     }
   }
 }
-for (const file of ["java.html", "404.html"]) {
+for (const file of ["404.html"]) {
   if (pages.has(file) && pages.get(file).includes('<svg class="svg-sprite"')) {
     fail(`${file}: unused shared icon sprite adds unnecessary markup`);
   }
