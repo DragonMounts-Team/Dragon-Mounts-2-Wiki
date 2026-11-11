@@ -262,20 +262,50 @@ ol.path b{font:400 1.1rem var(--mc)}ol.path span{color:var(--mute)}
   dl.facts{grid-template-columns:1fr}dl.facts dd{border-top:0;padding-top:0}.release-strip a{margin-left:0}article{overflow-wrap:anywhere}}
 @media print{.site,.nav-drawer,.menu-toggle,.foot,.finder,.chipset,.skip{display:none!important}body{background:#fff;color:#000}details.q .body{display:block}}
 
-/* ===== news cards (minecraft.net "Latest news" style) ===== */
-.news{margin-top:2.5rem}
-.news-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));margin:1.2rem 0}
-.news-card{position:relative;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;padding:1.1rem 1.2rem 2.6rem;color:#fff;text-decoration:none;border:2px solid #000;
-  background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.72)),url(mc/dirt.png) 0 0/64px;image-rendering:pixelated;box-shadow:inset 0 3px 0 rgba(255,255,255,.12),0 4px 0 #000;transition:transform .12s}
-.news-card[data-stage="Pre-release"]{background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.72)),url(mc/cobblestone.png) 0 0/64px}
-.news-card[data-stage="Hotfix"]{background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.72)),url(mc/obsidian.png) 0 0/64px}
-.news-card.big{grid-column:1/-1;min-height:15rem;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.75)),url(mc/grass_block_top.png) 0 0/64px}
-.news-card:hover{transform:translateY(-4px);color:#fff}.news-card:hover strong{text-decoration:underline}
-.news-card strong{font:400 1.35rem/1.2 var(--mc);text-shadow:2px 2px 0 rgba(0,0,0,.5)}.news-card.big strong{font-size:2rem}
-.news-tag{align-self:flex-start;padding:.1rem .6rem;background:var(--g2);font:400 .75rem var(--mc);box-shadow:inset 0 -3px 0 var(--g3);letter-spacing:.05em}
-.news-card[data-stage="Pre-release"] .news-tag{background:#b8860b;box-shadow:inset 0 -3px 0 #6b4e06}
-.news-card[data-stage="Hotfix"] .news-tag{background:#a93226;box-shadow:inset 0 -3px 0 #641e16}
-.news-sum{font-size:.9rem;color:#e3e3e5;max-width:46rem}.news-card time{position:absolute;left:1.2rem;bottom:.8rem;font:400 .8rem var(--mc);color:#b1b2b5}
-.commit-feed{list-style:none;padding:0;display:grid;gap:.4rem}
-.commit-feed li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 1rem;padding:.6rem .9rem;background:var(--card);border:2px solid var(--line);border-left:6px solid var(--g1)}
-.commit-feed a{text-decoration:none;color:var(--fg)}.commit-feed a:hover{color:var(--at)}.commit-feed small{color:var(--mute)}
+
+/* ===== v3: cleaner, minecraft.net-style (flat surfaces, no block textures) ===== */
+body{font-size:1rem;line-height:1.65}
+h2{font-size:1.7rem;margin:2.6rem 0 .9rem;padding-bottom:0}
+h2::after{display:none}
+.phead,.home-feature,.edition-picker{background:linear-gradient(180deg,#313233 0%,#1e1e1f 100%);border-bottom:4px solid var(--g1)}
+.phead::after,.home-feature::after,.foot::before{display:none}
+.phead{padding:2.6rem 0 2.8rem}
+.phead h1,.home-feature h1,.edition-picker h1{text-shadow:none}
+.home-feature{margin-bottom:0}.edition-picker{margin-bottom:0}
+.home-feature-inner{padding-block:3rem}
+.home-icon{background:none;border:0;box-shadow:none;padding:0}.home-icon figcaption,.home-note,.feature-release span:last-child{display:none}
+.edition-status{padding:.4rem 0}
+.foot{margin-top:3rem;border-top:4px solid var(--g1)}
+.news,#news{display:none}
+.release-strip{display:none}
+.home-content>h2{text-align:left}
+.task-group>h3{margin:1.8rem 0 .6rem;font-size:1.15rem;color:var(--mute)}
+.tasks a,.edition-card{border:0;border-bottom:4px solid transparent;box-shadow:0 1px 3px rgba(0,0,0,.18);transition:box-shadow .15s,border-color .15s}
+.tasks a:hover,.edition-card:hover,.edition-card:focus-visible{transform:none;box-shadow:0 6px 16px rgba(0,0,0,.28)}
+.tasks a{position:relative;padding:1.1rem 1.2rem 1.1rem 4.2rem}
+.tasks a::before{content:"";background:none;position:absolute;left:1.1rem;top:1.15rem;width:2.1rem;height:2.1rem;background:var(--g2);
+  -webkit-mask:var(--ic,none) center/1.4rem no-repeat;mask:var(--ic,none) center/1.4rem no-repeat;background:var(--g2);box-shadow:none}
+.tasks a:hover::before{background:var(--g1)}
+.release-entry{box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.commit-feed li{border:0;border-left:4px solid var(--g1);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.tasks a{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><rect x=%273%27 y=%273%27 width=%277%27 height=%277%27/><rect x=%2714%27 y=%273%27 width=%277%27 height=%277%27/><rect x=%273%27 y=%2714%27 width=%277%27 height=%277%27/><rect x=%2714%27 y=%2714%27 width=%277%27 height=%277%27/></svg>")}
+.tasks a[href="install.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M14.5 6a4 4 0 0 0 4.9 5L21 12.600 12.600 21a2.100 2.100 0 0 1-3-3L18 9.500%27/><path d=%27M9.500 4.500L7 7 4 6 3 9l3 1 2.500 2.500%27/></svg>")}
+.tasks a[href*="#downloads"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3v12m0 0l-4-4m4 4l4-4M4 20h16%27/></svg>")}
+.tasks a[href="dragons.html#species"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z%27/><path d=%27M7.500 14c3 1.500 6 1.500 9 0%27/></svg>")}
+.tasks a[href*="#hatching"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z%27/><path d=%27M7.500 14c3 1.500 6 1.500 9 0%27/></svg>")}
+.tasks a[href*="#taming"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.500A4 4 0 0 1 19 10c0 5.500-7 10-7 10z%27/></svg>")}
+.tasks a[href*="#controls"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M2 19C3 10 9 5 22 4c-1 4-3 6-6 7 2 0 3 0 5 0-2 4-6 6-10 6 1 0 2 0 3-1-4 0-8 1-12 3z%27/></svg>")}
+.tasks a[href*="#transformations"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M4 8h13l-3-3M20 16H7l3 3%27/></svg>")}
+.tasks a[href*="items.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><rect x=%273%27 y=%277%27 width=%2718%27 height=%2713%27/><path d=%27M3 12h18M10 12v3h4v-3M5 7V5h14v2%27/></svg>")}
+.tasks a[href*="faq.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><circle cx=%2712%27 cy=%2712%27 r=%279%27/><path d=%27M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.7.400-1 .9-1 1.700M12 17v.01%27/></svg>")}
+.tasks a[href*="curseforge"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M6 3h9l4 4v14H6z%27/><path d=%27M14 3v5h5M9 13h7M9 17h7%27/></svg>")}
+.tasks a[href$="install.html"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M14.5 6a4 4 0 0 0 4.9 5L21 12.600 12.600 21a2.100 2.100 0 0 1-3-3L18 9.500%27/><path d=%27M9.500 4.500L7 7 4 6 3 9l3 1 2.500 2.500%27/></svg>")}
+.tasks a[href="dragons.html#species"]{--ic:url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27><path d=%27M12 3c4 0 7 6 7 11 0 4-3 7-7 7s-7-3-7-7c0-5 3-11 7-11z%27/><path d=%27M7.500 14c3 1.500 6 1.500 9 0%27/></svg>")}
+
+.tasks a::before{background:var(--g2)!important}
+.tasks a{--tint:rgba(82,165,53,.14)}
+.tasks a::after{content:"";position:absolute;left:1.1rem;top:1.15rem;width:2.1rem;height:2.1rem;background:var(--tint);z-index:-1}
+.tasks a{isolation:isolate}
+.feature-actions .btn:nth-child(3){display:none}
+.edition-status{display:flex;justify-content:space-between;align-items:center;max-width:76rem;margin:0 auto;padding:.5rem max(1.25rem,env(safe-area-inset-left,0px));background:none;color:var(--mute);font-size:.9rem}
+.edition-status span{color:var(--mute)}.edition-status button{min-height:32px;padding:.1rem .9rem;font-size:.85rem}

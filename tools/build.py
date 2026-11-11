@@ -399,7 +399,6 @@ def build_home():
 </div>
 </section>
 <div class="wrap home-note"><p class="note"><strong>Dragon Mounts 2 project guide.</strong> Mechanics and species are documented for the public v{VERSION} release. Check the <a href="{OFFICIAL_WIKI}">project development wiki</a> for technical notes and the <a href="{OFFICIAL_FILES}">official download listing</a> for current game-version support.</p></div>
-<section class="wrap news" id="news"><h2>Latest news</h2><div class="news-grid" id="news-grid"><a class="news-card big" href="changelog.html"><span class="news-tag">CHANGELOG</span><strong>Loading the latest releases…</strong><span class="news-sum">Pre-releases and updates from GitHub appear here automatically.</span></a></div><p><a class="btn ghost sm" href="changelog.html">All releases and changelogs</a></p></section>
 <div class="wrap home-content">
 {h2("tasks", "Browse the guide by goal", f, "Section")}
 {tasks_html}

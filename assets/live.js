@@ -67,13 +67,4 @@
     });
   }
 
-  // Home page: minecraft.net-style "Latest news" cards.
-  var nb = $("#news-grid");
-  if (nb) releases().then(function (all) {
-    nb.innerHTML = all.slice(0, 6).map(function (r, i) {
-      var tag = r.stage === "Pre-release" ? "PRE-RELEASE" : r.stage === "Hotfix" ? "HOTFIX" : "RELEASE";
-      return '<a class="news-card' + (i === 0 ? " big" : "") + '" href="changelog.html#' + esc(slug("release-" + r.tag)) + '" data-stage="' + esc(r.stage) + '"><span class="news-tag">' + tag +
-        '</span><strong>' + esc(r.version) + '</strong><span class="news-sum">' + esc(r.summary) + '</span><time>' + esc(r.date) + '</time></a>';
-    }).join("");
-  });
 })();
