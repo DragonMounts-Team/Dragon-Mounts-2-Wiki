@@ -261,3 +261,21 @@ ol.path b{font:400 1.1rem var(--mc)}ol.path span{color:var(--mute)}
 @media(max-width:600px){h2{font-size:1.5rem}.brand{min-width:0;font-size:1rem;gap:.45rem}.mark{width:36px;height:36px}
   dl.facts{grid-template-columns:1fr}dl.facts dd{border-top:0;padding-top:0}.release-strip a{margin-left:0}article{overflow-wrap:anywhere}}
 @media print{.site,.nav-drawer,.menu-toggle,.foot,.finder,.chipset,.skip{display:none!important}body{background:#fff;color:#000}details.q .body{display:block}}
+
+/* ===== news cards (minecraft.net "Latest news" style) ===== */
+.news{margin-top:2.5rem}
+.news-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));margin:1.2rem 0}
+.news-card{position:relative;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;padding:1.1rem 1.2rem 2.6rem;color:#fff;text-decoration:none;border:2px solid #000;
+  background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.72)),url(mc/dirt.png) 0 0/64px;image-rendering:pixelated;box-shadow:inset 0 3px 0 rgba(255,255,255,.12),0 4px 0 #000;transition:transform .12s}
+.news-card[data-stage="Pre-release"]{background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.72)),url(mc/cobblestone.png) 0 0/64px}
+.news-card[data-stage="Hotfix"]{background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.72)),url(mc/obsidian.png) 0 0/64px}
+.news-card.big{grid-column:1/-1;min-height:15rem;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.75)),url(mc/grass_block_top.png) 0 0/64px}
+.news-card:hover{transform:translateY(-4px);color:#fff}.news-card:hover strong{text-decoration:underline}
+.news-card strong{font:400 1.35rem/1.2 var(--mc);text-shadow:2px 2px 0 rgba(0,0,0,.5)}.news-card.big strong{font-size:2rem}
+.news-tag{align-self:flex-start;padding:.1rem .6rem;background:var(--g2);font:400 .75rem var(--mc);box-shadow:inset 0 -3px 0 var(--g3);letter-spacing:.05em}
+.news-card[data-stage="Pre-release"] .news-tag{background:#b8860b;box-shadow:inset 0 -3px 0 #6b4e06}
+.news-card[data-stage="Hotfix"] .news-tag{background:#a93226;box-shadow:inset 0 -3px 0 #641e16}
+.news-sum{font-size:.9rem;color:#e3e3e5;max-width:46rem}.news-card time{position:absolute;left:1.2rem;bottom:.8rem;font:400 .8rem var(--mc);color:#b1b2b5}
+.commit-feed{list-style:none;padding:0;display:grid;gap:.4rem}
+.commit-feed li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 1rem;padding:.6rem .9rem;background:var(--card);border:2px solid var(--line);border-left:6px solid var(--g1)}
+.commit-feed a{text-decoration:none;color:var(--fg)}.commit-feed a:hover{color:var(--at)}.commit-feed small{color:var(--mute)}
