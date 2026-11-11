@@ -77,6 +77,49 @@
   }
   setWikiSettings();
   renderNavigation();
+  /* ---------- minecraft.net-style top navigation ---------- */
+  function renderTopNav() {
+    var bar = $(".site .bar"), tools = $(".site .tools");
+    if (!bar || !tools || $(".topnav") || !Array.isArray(CFG.navigation)) return;
+    var currentPath = window.location.pathname;
+    var nav = document.createElement("nav");
+    nav.className = "topnav";
+    nav.setAttribute("aria-label", "Main");
+    CFG.navigation.forEach(function (group) {
+      if (!group || typeof group.title !== "string" || !Array.isArray(group.links)) return;
+      var wrap = document.createElement("div");
+      wrap.className = "tn-group";
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "tn-btn"; btn.textContent = group.title;
+      btn.setAttribute("aria-expanded", "false");
+      var list = document.createElement("ul");
+      list.className = "tn-menu";
+      var active = false;
+      group.links.forEach(function (page) {
+        var href = page && typeof page.href === "string" ? safeHref(page.href, false) : null;
+        if (!href || typeof page.label !== "string") return;
+        var li = document.createElement("li"), a = document.createElement("a");
+        a.textContent = page.label; a.href = href;
+        if (new URL(href, window.location.href).pathname === currentPath) { a.setAttribute("aria-current", "page"); active = true; }
+        li.appendChild(a); list.appendChild(li);
+      });
+      if (active) wrap.classList.add("is-active");
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = btn.getAttribute("aria-expanded") !== "true";
+        $$(".tn-btn").forEach(function (b) { b.setAttribute("aria-expanded", "false"); });
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      wrap.appendChild(btn); wrap.appendChild(list); nav.appendChild(wrap);
+    });
+    document.addEventListener("click", function () { $$(".tn-btn").forEach(function (b) { b.setAttribute("aria-expanded", "false"); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") $$(".tn-btn").forEach(function (b) { b.setAttribute("aria-expanded", "false"); }); });
+    bar.insertBefore(nav, tools);
+    var cta = document.createElement("a");
+    cta.className = "tn-cta"; cta.href = "install.html#downloads"; cta.textContent = "Download";
+    tools.insertBefore(cta, tools.firstChild);
+  }
+  renderTopNav();
 
   var store = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -105,7 +148,7 @@
     tbtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     tbtn.title = dark ? "Switch to light mode" : "Switch to dark mode";
     var themeColor = $("meta[name='theme-color']");
-    if (themeColor) themeColor.content = dark ? "#1f2328" : "#edf1f4";
+    if (themeColor) themeColor.content = dark ? "#1e1e1f" : "#ffffff";
   }
   if (tbtn) {
     syncThemeControl();

@@ -1,9 +1,9 @@
 window.DM_CONFIG = {
   "theme": {
-    "accentLight": "#5f6975",
-    "accentDark": "#a8b0b9",
-    "featureLight": "#f8fafc",
-    "featureDark": "#1f2328"
+    "accentLight": "#2f7a1f",
+    "accentDark": "#6cc349",
+    "featureLight": "#313233",
+    "featureDark": "#262627"
   },
   "navigation": [
     {

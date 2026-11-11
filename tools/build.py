@@ -32,113 +32,11 @@ DOWNLOAD_SOURCES = [
     ("Vatonage", "https://vatonage.com/mods/dragon-mounts-2"),
     ("ModBay", "https://modbay.org/mods/4446-dragon-mounts-2.html"),
 ]
-GITHUB_RELEASES = [
-    {
-        "version": "2.0 Pre-Release 3.4",
-        "date": "2025-10-29",
-        "stage": "Pre-release",
-        "tag": "2.0-Pre-Release-3.4",
-        "summary": "Egg conversion and Dragon Core spawning fixes, invisible dragon fixes, shield animation fixes, and Dragon Essence removed from command and Creative visibility.",
-        "changes": [
-            "Restored egg conversion and fixed issues introduced in Pre-Release 3.3.",
-            "Fixed dragons appearing invisible.",
-            "Removed the ten-tick delay when the Dragon Core spawns a dragon.",
-            "Fixed first- and third-person shield animations.",
-            "Made Dragon Essence unavailable through commands and the Creative inventory.",
-        ],
-    },
-    {
-        "version": "2.0 Pre-Release 3.3",
-        "date": "2025-10-28",
-        "stage": "Pre-release",
-        "tag": "2.0-Pre-Release-3.3",
-        "summary": "Water Dragon armor display, flight, and egg conversion fixes.",
-        "changes": [
-            "Fixed armor display on Water Dragons.",
-            "Fixed flight.",
-            "Updated egg conversion.",
-        ],
-    },
-    {
-        "version": "3.7.3",
-        "date": "2025-08-07",
-        "stage": "Release",
-        "tag": "3.7.3",
-        "summary": "Vibrant Visuals support, a rare Aether Dragon, Storm Dragon particles, Nether Dragon fixes, and egg acquisition changes.",
-        "changes": [
-            "Added Vibrant Visuals support, a rare Aether Dragon, and new Storm Dragon particles.",
-            "Fixed Nether Dragon issues and stretched textures.",
-            "Removed the Ender Dragon Egg recipe; crouch-interact with flint and steel while holding a vanilla Dragon Egg to hatch an Ender Dragon.",
-            "Changed the Dark Dragon Egg method: strike a Moonlight Dragon Egg on a lightning rod with lightning.",
-            "Changed identifiers to the dragonmountsplus namespace.",
-        ],
-    },
-    {
-        "version": "3.7.2 Hotfix",
-        "date": "2025-07-26",
-        "stage": "Hotfix",
-        "tag": "3.7.2-hotfix",
-        "summary": "Fixes for rare Storm glow, dragon glows, the Forest Dragon, and shears enchantments; updated the rare Ender Dragon texture.",
-        "changes": [
-            "Fixed rare Storm glow and incorrect dragon glow display.",
-            "Updated the rare Ender Dragon texture.",
-            "Fixed the Forest Dragon and shears enchantments.",
-        ],
-    },
-    {
-        "version": "3.7.2",
-        "date": "2025-07-25",
-        "stage": "Release",
-        "tag": "3.7.2",
-        "summary": "Three rare dragons, dragon head blocks, Copper Dragon Armor, an updated Nether design, animated Dragon Core, faster egg hatching, and Dragon Flutes.",
-        "changes": [
-            "Added rare Ender, Storm, and Nether Dragons, plus their three dragon heads.",
-            "Added Copper Dragon Armor and a redesigned Nether Dragon.",
-            "Added an animated Dragon Core block and Emerald-assisted egg hatching.",
-            "Renamed Dragon Whistles to Dragon Flutes and updated their sounds.",
-            "Reduced baby dragon growl volume, organized dropped heads by species, and adjusted rare dragon frequency.",
-            "Introduced a new dragon armor system.",
-        ],
-    },
-    {
-        "version": "3.7.1 Hotfix",
-        "date": "2025-07-22",
-        "stage": "Hotfix",
-        "tag": "3.7.1-hotfix",
-        "summary": "Re-added rare dragons, fixed invisible Skeleton and Wither Dragons, improved dragon head drops and placement, and fixed missing files and tooltips.",
-        "changes": [
-            "Re-added rare dragons and fixed invisible Skeleton and Wither Dragons.",
-            "Fixed dragons dropping the correct heads; added 16 head rotations and wall placement states.",
-            "Fixed missing files and removed Diamond Scissors enchantments that could duplicate items.",
-            "Updated tooltips to display colors.",
-        ],
-    },
-    {
-        "version": "3.7.0 Hotfix 1",
-        "date": "2025-07-20",
-        "stage": "Hotfix",
-        "tag": "3.7.0-hotfix.1",
-        "summary": "Enabled Dragon Shears on sheep and fixed an Amulet weakness effect, Ender Dragon Head texture, and Ice Dragon nest generation; dragon head limitations remained.",
-        "changes": [
-            "Allowed Dragon Shears to shear sheep.",
-            "Fixed the Amulet weakness effect, Ender Dragon Head texture, and Ice Dragon nest generation.",
-            "The release notes listed remaining Dragon Head limitations: redstone response, shadows, diagonal ground placement, wall attachment, break particles, head size, and mouth animation while players walk.",
-        ],
-    },
-    {
-        "version": "3.7.0",
-        "date": "2025-07-20",
-        "stage": "Release",
-        "tag": "3.7.0",
-        "summary": "Added Dragon Core and Dragon Head blocks and Dragon Essence Gems; Dragon Egg textures became animated. The release notes warned that the build had bugs.",
-        "changes": [
-            "Added the Dragon Core block for reviving dragons and Dragon Head blocks.",
-            "Added Dragon Essence Gems for use with the Dragon Core.",
-            "Changed all Dragon Egg textures to animated textures.",
-            "The original release notes warned that this build had bugs and could cause unexpected behavior.",
-        ],
-    },
-]
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(__file__))
+import releases as RELEASES
+# Release data lives in assets/releases.json (auto-updated by tools/update-changelog.py).
+GITHUB_RELEASES = RELEASES.load()
 
 DRAGON_ROSTER = [
     ("Aether", "Levitation", "Natural nest", "Most biomes except Mesa", "aether"),
@@ -730,22 +628,9 @@ def build_changelog():
     f = "changelog.html"
     secs = [("coverage", "Wiki coverage"), ("releases", "Published release history"),
             ("prereleases", "2.0 prereleases"), ("sources", "Official release pages")]
-    release_entries = []
-    prerelease_entries = []
-    for release in GITHUB_RELEASES:
-        anchor = slug("release-" + release["tag"])
-        changes = "".join(f"<li>{e(change)}</li>" for change in release["changes"])
-        entry = (
-            f'<details class="release-entry" id="{e(anchor)}">'
-            f'<summary><span><b>{e(release["version"])}</b>'
-            f'<small>{e(release["date"])} · {e(release["stage"])}</small></span>'
-            f'<span class="release-summary">{e(release["summary"])}</span></summary>'
-            f'<ul>{changes}</ul>'
-            f'<p class="release-source"><a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/releases/tag/{e(release["tag"])}">Official release notes</a></p>'
-            f'</details>'
-        )
-        (prerelease_entries if release["stage"] == "Pre-release" else release_entries).append(entry)
-        idx(release["version"], f, anchor, "Release note", release["summary"])
+    stable_html, pre_html, search_rows = RELEASES.render(GITHUB_RELEASES)
+    for row in search_rows:
+        idx(row["t"], row["p"], row["a"], row["k"], row["x"])
     coverage_body = (
         f'<dl class="facts"><dt>Documented guide</dt><dd>Dragon Mounts 2 v{VERSION}</dd>'
         f'<dt>Platform</dt><dd>Minecraft Bedrock</dd>'
@@ -759,11 +644,11 @@ def build_changelog():
 
 {h2("releases", "Published release history", f)}
 <p>These entries summarize every published stable release and hotfix currently listed on the project’s GitHub Releases page. Open an entry for its changes and source.</p>
-<div class="release-list">{''.join(release_entries)}</div>
+{RELEASES.wrap("releases", '<div class="release-list">' + stable_html + '</div>')}
 
 {h2("prereleases", "2.0 prereleases", f)}
 <p>These are prerelease notes, not a stable-release compatibility guarantee.</p>
-<div class="release-list">{''.join(prerelease_entries)}</div>
+{RELEASES.wrap("prereleases", '<div class="release-list">' + pre_html + '</div>')}
 
 {h2("sources", "Official release pages")}
 <ul>{''.join(f'<li><a href="{e(url)}">{e(name)}</a></li>' for name, url in DOWNLOAD_SOURCES)}<li><a href="https://github.com/DragonMounts-Team/DragonMounts2-Bedrock/releases">GitHub Releases</a></li><li><a href="{OFFICIAL_WIKI}">Project wiki</a></li></ul>

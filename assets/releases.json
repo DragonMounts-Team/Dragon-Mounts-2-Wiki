@@ -1,0 +1,115 @@
+[
+  {
+    "version": "2.0 Pre-Release 3.4",
+    "date": "2025-10-29",
+    "stage": "Pre-release",
+    "tag": "2.0-Pre-Release-3.4",
+    "summary": "Egg conversion and Dragon Core spawning fixes, invisible dragon fixes, shield animation fixes, and Dragon Essence removed from command and Creative visibility.",
+    "changes": [
+      "Restored egg conversion and fixed issues introduced in Pre-Release 3.3.",
+      "Fixed dragons appearing invisible.",
+      "Removed the ten-tick delay when the Dragon Core spawns a dragon.",
+      "Fixed first- and third-person shield animations.",
+      "Made Dragon Essence unavailable through commands and the Creative inventory."
+    ],
+    "curated": true
+  },
+  {
+    "version": "2.0 Pre-Release 3.3",
+    "date": "2025-10-28",
+    "stage": "Pre-release",
+    "tag": "2.0-Pre-Release-3.3",
+    "summary": "Water Dragon armor display, flight, and egg conversion fixes.",
+    "changes": [
+      "Fixed armor display on Water Dragons.",
+      "Fixed flight.",
+      "Updated egg conversion."
+    ],
+    "curated": true
+  },
+  {
+    "version": "3.7.3",
+    "date": "2025-08-07",
+    "stage": "Release",
+    "tag": "3.7.3",
+    "summary": "Vibrant Visuals support, a rare Aether Dragon, Storm Dragon particles, Nether Dragon fixes, and egg acquisition changes.",
+    "changes": [
+      "Added Vibrant Visuals support, a rare Aether Dragon, and new Storm Dragon particles.",
+      "Fixed Nether Dragon issues and stretched textures.",
+      "Removed the Ender Dragon Egg recipe; crouch-interact with flint and steel while holding a vanilla Dragon Egg to hatch an Ender Dragon.",
+      "Changed the Dark Dragon Egg method: strike a Moonlight Dragon Egg on a lightning rod with lightning.",
+      "Changed identifiers to the dragonmountsplus namespace."
+    ],
+    "curated": true
+  },
+  {
+    "version": "3.7.2 Hotfix",
+    "date": "2025-07-26",
+    "stage": "Hotfix",
+    "tag": "3.7.2-hotfix",
+    "summary": "Fixes for rare Storm glow, dragon glows, the Forest Dragon, and shears enchantments; updated the rare Ender Dragon texture.",
+    "changes": [
+      "Fixed rare Storm glow and incorrect dragon glow display.",
+      "Updated the rare Ender Dragon texture.",
+      "Fixed the Forest Dragon and shears enchantments."
+    ],
+    "curated": true
+  },
+  {
+    "version": "3.7.2",
+    "date": "2025-07-25",
+    "stage": "Release",
+    "tag": "3.7.2",
+    "summary": "Three rare dragons, dragon head blocks, Copper Dragon Armor, an updated Nether design, animated Dragon Core, faster egg hatching, and Dragon Flutes.",
+    "changes": [
+      "Added rare Ender, Storm, and Nether Dragons, plus their three dragon heads.",
+      "Added Copper Dragon Armor and a redesigned Nether Dragon.",
+      "Added an animated Dragon Core block and Emerald-assisted egg hatching.",
+      "Renamed Dragon Whistles to Dragon Flutes and updated their sounds.",
+      "Reduced baby dragon growl volume, organized dropped heads by species, and adjusted rare dragon frequency.",
+      "Introduced a new dragon armor system."
+    ],
+    "curated": true
+  },
+  {
+    "version": "3.7.1 Hotfix",
+    "date": "2025-07-22",
+    "stage": "Hotfix",
+    "tag": "3.7.1-hotfix",
+    "summary": "Re-added rare dragons, fixed invisible Skeleton and Wither Dragons, improved dragon head drops and placement, and fixed missing files and tooltips.",
+    "changes": [
+      "Re-added rare dragons and fixed invisible Skeleton and Wither Dragons.",
+      "Fixed dragons dropping the correct heads; added 16 head rotations and wall placement states.",
+      "Fixed missing files and removed Diamond Scissors enchantments that could duplicate items.",
+      "Updated tooltips to display colors."
+    ],
+    "curated": true
+  },
+  {
+    "version": "3.7.0 Hotfix 1",
+    "date": "2025-07-20",
+    "stage": "Hotfix",
+    "tag": "3.7.0-hotfix.1",
+    "summary": "Enabled Dragon Shears on sheep and fixed an Amulet weakness effect, Ender Dragon Head texture, and Ice Dragon nest generation; dragon head limitations remained.",
+    "changes": [
+      "Allowed Dragon Shears to shear sheep.",
+      "Fixed the Amulet weakness effect, Ender Dragon Head texture, and Ice Dragon nest generation.",
+      "The release notes listed remaining Dragon Head limitations: redstone response, shadows, diagonal ground placement, wall attachment, break particles, head size, and mouth animation while players walk."
+    ],
+    "curated": true
+  },
+  {
+    "version": "3.7.0",
+    "date": "2025-07-20",
+    "stage": "Release",
+    "tag": "3.7.0",
+    "summary": "Added Dragon Core and Dragon Head blocks and Dragon Essence Gems; Dragon Egg textures became animated. The release notes warned that the build had bugs.",
+    "changes": [
+      "Added the Dragon Core block for reviving dragons and Dragon Head blocks.",
+      "Added Dragon Essence Gems for use with the Dragon Core.",
+      "Changed all Dragon Egg textures to animated textures.",
+      "The original release notes warned that this build had bugs and could cause unexpected behavior."
+    ],
+    "curated": true
+  }
+]
