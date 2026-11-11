@@ -105,7 +105,7 @@
     tbtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     tbtn.title = dark ? "Switch to light mode" : "Switch to dark mode";
     var themeColor = $("meta[name='theme-color']");
-    if (themeColor) themeColor.content = dark ? "#1f2328" : "#edf1f4";
+    if (themeColor) themeColor.content = dark ? "#2b2b2b" : "#c6c6c6";
   }
   if (tbtn) {
     syncThemeControl();
