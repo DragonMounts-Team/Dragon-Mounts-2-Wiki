@@ -1,5 +1,47 @@
 [
   {
+    "version": "Alpha Test 2.0 #02 Release",
+    "date": "2026-10-27",
+    "stage": "Pre-release",
+    "tag": "2.0Alpha#2",
+    "summary": "Fixed Missing Dragon Bones. Fixed Dragons floating when rider exists a sitting dragon.",
+    "changes": [
+      "Fixed Missing Dragon Bones.",
+      "Fixed Dragons floating when rider exists a sitting dragon.",
+      "Fixed Nests missing there dragons eggs.",
+      "Fixed Leather dragon armor not displaying correctly.",
+      "Fixed V-formation flight when other dragon where sitting.",
+      "Fixed Dragons not returning to there states correctly.",
+      "Fixed Sunlight Dragon Scale Axe texture.",
+      "Fixed Spears missing attachables.",
+      "Fixed Settings not correctly applying.",
+      "Fixed Amulet, Scepter and Flute damaging dragons.",
+      "Fixed Dragon hatching.",
+      "Added Dragon Core."
+    ]
+  },
+  {
+    "version": "2.0Alpha#01",
+    "date": "2026-10-21",
+    "stage": "Pre-release",
+    "tag": "2.0Alpha#01",
+    "summary": "This changelog covers Update 2.0 — Drop 1.",
+    "changes": [
+      "Some features may not be mentioned because they were accidentally left out. [Grummboy2].",
+      "Thanks to Kyuu for helping and rewriting the majority of the code.",
+      "Thanks to the Bedrock Add-on Server for templates for some features.",
+      "Some features shown on Discord did not make it into this update (or were scrapped).",
+      "Thanks to Lotus for helping find and fix bugs.",
+      "We’re implementing a system to support compatibility with other Bedrock add-ons that add new dragons or items.",
+      "Breeding new species with ours will not be supported, but we’ll look into alternatives.",
+      "Name replaced with pack.name (pulled from .lang) [RP, BP].",
+      "Description replaced with pack.description (pulled from .lang) [RP, BP].",
+      "Minimum Minecraft version: 1.26.50.",
+      "Server Script API: 2.10.0.",
+      "Server UI Script API: 2.1.0."
+    ]
+  },
+  {
     "version": "2.0 Pre-Release 3.4",
     "date": "2025-10-29",
     "stage": "Pre-release",
